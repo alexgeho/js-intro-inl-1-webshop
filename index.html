@@ -1,24 +1,72 @@
 <!doctype html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FED25D | Inlämningsuppgift 1</title>
-  </head>
-  <body>
-    <header>
-      header
-    </header>
 
-    <main>
-      <h1>Webshop</h1>
-      <button id="clickMe">Klicka på mig</button>
-    </main>
-    
-    <footer>
-      footer
-    </footer>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      padding: 0 15px 0;
+    }
+
+    header {
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 100;
+      }
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+
+      a {
+        text-decoration: none;
+        font-size: 1.5rem;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+      
+    }
+  </style>
+  <title>FED25D | Inlämningsuppgift 1</title>
+</head>
+
+<body>
+  <header>
+
+    <h1>Jästson's webbshop av godaste munkar i Snaskköping</h1>
+    <nav>
+      <a href="#">Hem</a>
+      <a href="#">Kategorier</a>
+      <a href="#">Om oss</a>
+      <a href="#">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Webshop</h1>
+
+  <aside>
+    <div class="filter"></div>
+    <div class="list"></div>
+  </aside>
+
+  <section>
+    <div class="products"></div>
+  </section>
+
+    <button id="clickMe">Klicka på mig</button>
+  </main>
+
+  <footer>
+    footer
+  </footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
