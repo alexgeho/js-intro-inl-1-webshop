@@ -3,6 +3,23 @@ const products = [
   { id: 2, name: 'Vaniljmunk', price: 22, category: 'Vanilj' }
 ];
 
+const productsHiden = [
+  { id: 1, name: 'Choklad', price: 25, category: 'Choklad-hiden' },
+  { id: 2, name: 'Vanilj', price: 22, category: 'Vanilj-hiden' }
+];
+
+const productsHidenObject = {
+  name: 'silk',
+  price: 250000,
+  category: 'hiden',
+}
+
+const hidenProd = document.querySelector('.products-hide')
+
+hidenProd.innerHTML += productsHidenObject;
+hidenProd.innerHTML += productsHidenObject.name;
+hidenProd.innerHTML += productsHidenObject.price;
+
 function renderProducts(list) {
   const container = document.querySelector('.products');
   container.innerHTML = '';
