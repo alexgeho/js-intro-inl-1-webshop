@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>">
+    href="data:image/svg+xml, svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
@@ -33,6 +33,14 @@
     .products-hide {
       display: none;
     }
+
+    .list {
+      display: none;
+    }
+
+    .list.open {
+      display: block;
+    }
   </style>
   <title>FED25D | Inlämningsuppgift 1</title>
 </head>
@@ -53,8 +61,13 @@
     <h1>Webshop</h1>
 
     <aside>
+      <button id="btnCategories">Show Categories</button>
       <div class="filter"></div>
-      <div class="list"></div>
+      <div class="list">
+        <a href="">Munk Protein</a>
+        <a href="">Munk Veggie</a>
+        <a href="">Munk Eco</a>
+      </div>
     </aside>
 
 

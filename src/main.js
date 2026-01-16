@@ -25,9 +25,22 @@ function showHiden(){
   document.querySelector('.products-hide').style.display = 'block';
 }
 
-const btn = document.querySelector('#clickMe')
+const btn1 = document.querySelector('#clickMe')
 
-btn.addEventListener('click', showHiden)
+btn1.addEventListener('click', showHiden)
+
+
+const btn = document.querySelector('#btnCategories')
+const list = document.querySelector('.list')
+
+btn.addEventListener('click', () => {
+  const isOpen = list.classList.toggle('open')
+
+  btn.textContent = isOpen ? 'Hide categories' : 'Show categories'
+})
+
+
+
 
 
 
