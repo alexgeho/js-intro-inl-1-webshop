@@ -8,6 +8,7 @@ const productsHiden = [
   { id: 2, name: 'Vanilj', price: 22, category: 'Vanilj-hiden' }
 ];
 
+// TESTS
 const productsHidenObject = {
   name: 'silk',
   price: 250000,
@@ -20,26 +21,38 @@ hidenProd.innerHTML += productsHidenObject;
 hidenProd.innerHTML += productsHidenObject.name;
 hidenProd.innerHTML += productsHidenObject.price;
 
-function renderProducts(list) {
-  const container = document.querySelector('.products');
-  container.innerHTML = '';
-
-  list.forEach(product => {
-    const div = document.createElement('div');
-    div.textContent = `${product.name} – ${product.price} kr`;
-    container.appendChild(div);
-  });
+function showHiden(){
+  document.querySelector('.products-hide').style.display = 'block';
 }
 
-document.querySelector('#clickMe').addEventListener('click', () => {
-  renderProducts(products);
-  alert('Hej Världen!');
-});
+const btn = document.querySelector('#clickMe')
 
-// Datum
-console.log(new Date().toLocaleDateString());
+btn.addEventListener('click', showHiden)
 
-// Timer
-setTimeout(() => {
-  console.log('Webshop ready');
-}, 2000);
+
+
+
+// //NEXT STEP
+// function renderProducts(list) {
+//   const container = document.querySelector('.products');
+//   container.innerHTML = '';
+
+//   list.forEach(product => {
+//     const div = document.createElement('div');
+//     div.textContent = `${product.name} – ${product.price} kr`;
+//     container.appendChild(div);
+//   });
+// }
+
+// document.querySelector('#clickMe').addEventListener('click', () => {
+//   renderProducts(products);
+//   alert('Hej Världen!');
+// });
+
+// // Datum
+// console.log(new Date().toLocaleDateString());
+
+// // Timer
+// setTimeout(() => {
+//   console.log('Webshop ready');
+// }, 2000);
