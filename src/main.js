@@ -30,11 +30,15 @@ const btn1 = document.querySelector('#clickMe')
 btn1.addEventListener('click', showHiden)
 
 
+////////////////////////////// MY TESTS /////////
+
 const btn = document.querySelector('#btnCategories')
 const list = document.querySelector('.list')
+const main = document.querySelector('main')
 
 btn.addEventListener('click', () => {
   const isOpen = list.classList.toggle('open')
+  main.classList.toggle('categories-open', isOpen)
 
   btn.textContent = isOpen ? 'Hide categories' : 'Show categories'
 })
