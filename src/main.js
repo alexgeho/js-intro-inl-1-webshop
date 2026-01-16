@@ -45,8 +45,13 @@ btn.addEventListener('click', () => {
 
 
 
+const btnBackground = document.querySelector('#btnBackground')
 
+btnBackground.addEventListener('click', changBackground)
 
+function changBackground () {
+  document.body.style.backgroundColor = 'green';
+}
 
 
 // //NEXT STEP
