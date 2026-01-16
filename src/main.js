@@ -21,7 +21,7 @@ hidenProd.innerHTML += productsHidenObject;
 hidenProd.innerHTML += productsHidenObject.name;
 hidenProd.innerHTML += productsHidenObject.price;
 
-function showHiden(){
+function showHiden() {
   document.querySelector('.products-hide').style.display = 'block';
 }
 
@@ -31,6 +31,29 @@ btn1.addEventListener('click', showHiden)
 
 
 ////////////////////////////// MY TESTS /////////
+
+const minus = document.querySelector('#subtract');
+const plus = document.querySelector('#add');
+const currentCount = document.querySelector('#currentCount');
+
+// console.log(minus, plus, currentCount);
+
+minus.addEventListener('click', subtract)
+
+function subtract() {
+  console.log(currentCount.value - 1);
+  currentCount.value -= 1;
+}
+
+function add() {
+  currentCount.value = Number(currentCount.value) + 1;
+}
+
+plus.addEventListener('click', add)
+
+
+
+///////
 
 const btn = document.querySelector('#btnCategories')
 const list = document.querySelector('.list')
@@ -49,7 +72,7 @@ const btnBackground = document.querySelector('#btnBackground')
 
 btnBackground.addEventListener('click', changBackground)
 
-function changBackground () {
+function changBackground() {
   document.body.style.backgroundColor = 'green';
 }
 
