@@ -11,6 +11,11 @@
       padding: 0 15px;
     }
 
+    main {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     header h1 {
       font-size: 1.5rem;
       font-weight: 100;
@@ -125,11 +130,16 @@
       bottom: 9px;
       transform: rotate(-45deg)
     }
+
+    .products-hide p {
+      margin: 8px 0;
+    }
   </style>
   <title>FED25D | Inlämningsuppgift 1</title>
 </head>
 
 <body>
+
   <header>
 
     <h1>Jästson's webbshop av godaste munkar i Snaskköping</h1>
@@ -142,7 +152,6 @@
   </header>
 
   <main>
-    <h1>Webshop</h1>
 
     <aside>
       <div>
@@ -158,36 +167,32 @@
         <a href="">Munk Veggie</a>
         <a href="">Munk Eco</a>
       </div>
+
+      <div>
+        <button id="openCloseNavMenu" class="burger">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav id="navBugerJs">
+          <ul id="menuLinks">
+            <li><a href="https://www.google.com" target="_blank">Line 1</a></li>
+            <li><a href="#home">Line 2</a></li>
+            <li><a href="#home">Line 3</a></li>
+            <li><a href="#home">Line 4</a></li>
+          </ul>
+
+        </nav>
+      </div>
+
+      <button id="clickMe">Klicka på mig</button>
     </aside>
 
-
     <section>
+      <div id="munkar"></div>
       <div class="products"></div>
       <div class="products-hide"></div>
     </section>
 
-
-    <button id="clickMe">Klicka på mig</button>
-
-
-    <div>
-      <button id="openCloseNavMenu" class="burger">
-        <span></span><span></span><span></span>
-      </button>
-
-
-
-
-      <nav id="navBugerJs">
-        <ul id="menuLinks">
-          <li><a href="https://www.google.com" target="_blank">Line 1</a></li>
-          <li><a href="#home">Line 2</a></li>
-          <li><a href="#home">Line 3</a></li>
-          <li><a href="#home">Line 4</a></li>
-        </ul>
-
-      </nav>
-    </div>
   </main>
 
 
@@ -195,6 +200,7 @@
     footer
   </footer>
   <script type="module" src="/src/main.js"></script>
+
 </body>
 
 </html>

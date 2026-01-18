@@ -1,4 +1,31 @@
-///// 15_-_meny-knapp_med_javascript ///
+/// ARRAY with munkar
+
+const munkarDb = ['honey', 'vanilla', 'blueberry', 'cinnamon', 'stawberry', 'mango', 'banana'];
+console.log('munkar before splice', munkarDb);
+
+munkarDb.splice(4, 2)
+
+console.log('munkar after splice', munkarDb);
+
+munkarDb.sort()
+
+console.log('sort:::::', munkarDb);
+
+const hasHoney = munkarDb.indexOf('honey')
+
+console.log('hasHoney:', hasHoney);
+
+
+
+
+const munkar = document.querySelector('#munkar')
+
+munkar.innerHTML = munkarDb.join(' ')
+
+
+
+
+///// 15_-_meny-knapp_med_javascript + BURGER ///
 const openCloseNavMenu = document.querySelector('#openCloseNavMenu')
 const navBugerJs = document.querySelector('#navBugerJs')
 const menuLinks = document.querySelectorAll('#menuLinks a').forEach(a => a.textContent = a.textContent.toUpperCase())
@@ -13,7 +40,7 @@ function toggleMenuOpenState() {
   navBugerJs.classList.toggle('open')
 }
 
-openCloseNavMenu
+
 
 
 ///// toDo - chaining for menu links to upper case
@@ -39,12 +66,13 @@ const productsHidenObject = {
 
 const hidenProd = document.querySelector('.products-hide')
 
-hidenProd.innerHTML += productsHidenObject;
-hidenProd.innerHTML += productsHidenObject.name;
-hidenProd.innerHTML += productsHidenObject.price;
+hidenProd.innerHTML = 
+`<p>${productsHidenObject.name}</p>
+<p>${productsHidenObject.price}</p>`
+
 
 function showHiden() {
-  document.querySelector('.products-hide').style.display = 'block';
+  document.querySelector('.products-hide').style.display = 'block'
 }
 
 const btn1 = document.querySelector('#clickMe')
