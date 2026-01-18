@@ -1,3 +1,24 @@
+/////
+const openCloseNavMenu = document.querySelector('#openCloseNavMenu')
+const navBugerJs = document.querySelector('#navBugerJs')
+const menuLinks = document.querySelectorAll('#menuLinks a').forEach(a => a.textContent = a.textContent.toUpperCase())
+
+
+
+openCloseNavMenu.addEventListener('click', toggleMenuOpenState)
+navBugerJs.addEventListener('click', toggleMenuOpenState)
+
+function toggleMenuOpenState (e) {
+  console.log(e)
+  navBugerJs.classList.toggle('open')
+}
+
+
+
+///// toDo - chaining for menu links to upper case
+/////
+/////
+
 const products = [
   { id: 1, name: 'Chokladmunk', price: 25, category: 'Choklad' },
   { id: 2, name: 'Vaniljmunk', price: 22, category: 'Vanilj' }

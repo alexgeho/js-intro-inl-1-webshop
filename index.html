@@ -61,9 +61,26 @@
     input {
       font-size: 16px;
       border: 1px solid #999;
-      border-radius: 4px;  
+      border-radius: 4px;
     }
 
+    #navBugerJs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #999;
+      width: 100%;
+      min-height: 100%;
+      display: none;
+    }
+
+    #navBugerJs.open {
+      position: relative;
+      width: 20%;
+      background-color: #999;
+      display: inline-block;
+
+    }
   </style>
   <title>FED25D | Inlämningsuppgift 1</title>
 </head>
@@ -105,8 +122,22 @@
       <div class="products-hide"></div>
     </section>
 
+
     <button id="clickMe">Klicka på mig</button>
+    <div>
+      <button id="openCloseNavMenu">Menu button</button>
+      <nav id="navBugerJs">
+        <ul id="menuLinks">
+          <li><a href="https://www.google.com" target="_blank">Line 1</a></li>
+          <li><a href="#home">Line 2</a></li>
+          <li><a href="#home">Line 3</a></li>
+          <li><a href="#home">Line 4</a></li>
+        </ul>
+    
+      </nav>
+    </div>
   </main>
+
 
   <footer>
     footer
