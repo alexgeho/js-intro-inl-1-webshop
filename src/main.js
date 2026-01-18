@@ -1,4 +1,4 @@
-/////
+///// 15_-_meny-knapp_med_javascript ///
 const openCloseNavMenu = document.querySelector('#openCloseNavMenu')
 const navBugerJs = document.querySelector('#navBugerJs')
 const menuLinks = document.querySelectorAll('#menuLinks a').forEach(a => a.textContent = a.textContent.toUpperCase())
@@ -8,11 +8,12 @@ const menuLinks = document.querySelectorAll('#menuLinks a').forEach(a => a.textC
 openCloseNavMenu.addEventListener('click', toggleMenuOpenState)
 navBugerJs.addEventListener('click', toggleMenuOpenState)
 
-function toggleMenuOpenState (e) {
-  console.log(e)
+function toggleMenuOpenState() {
+  openCloseNavMenu.classList.toggle('open')
   navBugerJs.classList.toggle('open')
 }
 
+openCloseNavMenu
 
 
 ///// toDo - chaining for menu links to upper case

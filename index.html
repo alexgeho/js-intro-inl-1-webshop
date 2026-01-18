@@ -81,6 +81,50 @@
       display: inline-block;
 
     }
+
+    .burger {
+      width: 30px;
+      height: 22px;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      position: relative
+    }
+
+    .burger span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #000;
+      transition: .3s
+    }
+
+    .burger span:nth-child(1) {
+      top: 0
+    }
+
+    .burger span:nth-child(2) {
+      top: 9px
+    }
+
+    .burger span:nth-child(3) {
+      bottom: 0
+    }
+
+    .burger.open span:nth-child(1) {
+      top: 9px;
+      transform: rotate(45deg)
+    }
+
+    .burger.open span:nth-child(2) {
+      opacity: 0
+    }
+
+    .burger.open span:nth-child(3) {
+      bottom: 9px;
+      transform: rotate(-45deg)
+    }
   </style>
   <title>FED25D | Inlämningsuppgift 1</title>
 </head>
@@ -124,8 +168,16 @@
 
 
     <button id="clickMe">Klicka på mig</button>
+
+
     <div>
-      <button id="openCloseNavMenu">Menu button</button>
+      <button id="openCloseNavMenu" class="burger">
+        <span></span><span></span><span></span>
+      </button>
+
+
+
+
       <nav id="navBugerJs">
         <ul id="menuLinks">
           <li><a href="https://www.google.com" target="_blank">Line 1</a></li>
@@ -133,7 +185,7 @@
           <li><a href="#home">Line 3</a></li>
           <li><a href="#home">Line 4</a></li>
         </ul>
-    
+
       </nav>
     </div>
   </main>
