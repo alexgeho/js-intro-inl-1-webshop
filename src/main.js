@@ -1,6 +1,58 @@
+/// Loopar with munkar
+
+const munkarDbTest4  = ['honey  munk', 'vanilla munk', 'blueberry munk', 'cinnamon munk', 'stawberry munk', 'mango munk', 'banana munk'];
+
+const shelf = document.querySelector('#munkarTest4')
+
+for (let i = 0; i < munkarDbTest4.length; i++) {
+ 
+  const munkName = munkarDbTest4[i];
+  const munk1Node = document.createElement('li');
+  const munk1TextNode = document.createTextNode(munkName);
+  munk1Node.appendChild(munk1TextNode);
+  shelf.appendChild(munk1Node)
+
+  console.log(munkName);
+  
+  
+}
+
+// const munk1Name = munkarDbTest4[0];
+// const munk1Node = document.createElement('li')
+// const munk1TextNode = document.createTextNode(munk1Name);
+
+// munk1Node.appendChild(munk1TextNode);
+
+// shelf.appendChild(munk1Node);
+
+// console.log('munk1Name:::::', munk1Name);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /// ARRAY with munkar
 
 const munkarDb = ['honey', 'vanilla', 'blueberry', 'cinnamon', 'stawberry', 'mango', 'banana'];
+
 console.log('munkar before splice', munkarDb);
 
 munkarDb.splice(4, 2)
