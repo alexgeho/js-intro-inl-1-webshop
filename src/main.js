@@ -1,6 +1,29 @@
-/// Loopar with munkar
+/// Loopar with munkar + object i arrey
 
-const munkarDbTest4 = ['honey  munk', 'vanilla munk', 'blueberry munk', 'cinnamon munk', 'stawberry munk', 'mango munk', 'banana munk'];
+
+const honeyMunk = {
+  name: 'honey munk 3',
+  count: 0,
+}
+
+const vanilaMunk = {
+  name: 'vanila munk 2',
+  count: 0,
+}
+
+const blueberryMunk = {
+  name: 'blueberry munk 2',
+  count: 0,
+}
+
+
+const munkarDbTest4 = [
+  honeyMunk, vanilaMunk, blueberryMunk,
+  // 'vanilla munk', 'blueberry munk', 'cinnamon munk', 'stawberry munk', 'mango munk', 'banana munk'
+];
+
+console.log('munkarDbTest4::::', munkarDbTest4[0][0]);
+
 
 const shelf = document.querySelector('#munkarTest4')
 
@@ -18,20 +41,47 @@ function addNewMunk() {
     return;
   }
 
-  if (munkarDbTest4.indexOf(newMunkName.value) === -1) {
-    munkarDbTest4.push(newMunkName.value)
+  // kollar om munk redan existerar som ett objekt
+  // push in ett objekt i arrayen ist'llet
+
+  const munkText = newMunkName.value;
+
+  const index = munkarDbTest4.findIndex(singleMunkObject => singleMunkObject.name === munkText)
+
+  console.log('INDEX :::::', index);
+
+
+  if (index === -1) {
+    munkarDbTest4.push({
+      name: munkText,
+      count: 1,
+    })
     printMunkShelf();
+  } else {
+    // munk finns redan, ;ka antalet istället
+    console.log('ELSE:::::', munkarDbTest4[index]);
+    munkarDbTest4[index].count += 1
   }
+  printMunkShelf();
 }
 
-
+/* 
+Prins <li> elements of the donuts
+*/
 
 function printMunkShelf() {
 
   shelf.innerHTML = '';
 
+
+
   for (let i = 0; i < munkarDbTest4.length; i++) {
-    const munkName = munkarDbTest4[i];
+    
+    const _munkName = munkarDbTest4[i].name;
+    const _munkCount = munkarDbTest4[i].count;
+    
+    const munkName = _munkName + ' ( ' + _munkCount + ' )';
+    
     const munk1Node = document.createElement('li');
     const munk1TextNode = document.createTextNode(munkName);
 
@@ -51,20 +101,24 @@ function printMunkShelf() {
 
   const munks = Array.from(document.querySelectorAll('li button'))
 
-  
+
 
   munks.forEach((item) => {
     item.addEventListener('click', removeMunk)
   })
-
-
 }
 
 
+/* 
+Remove munks
+*/
 
-function removeMunk(event) {  
+function removeMunk(event) {
 
-  const index = munkarDbTest4.indexOf(event.target.dataset.name)
+  const clickedMunk = event.target.dataset.name;
+
+
+  const index = munkarDbTest4.findIndex(singleMunkObject => singleMunkObject.name === clickedMunk)
   if (index > -1) {
     munkarDbTest4.splice(index, 1);
     printMunkShelf();
