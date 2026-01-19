@@ -34,12 +34,24 @@ function printMunkShelf() {
     const munkName = munkarDbTest4[i];
     const munk1Node = document.createElement('li');
     const munk1TextNode = document.createTextNode(munkName);
+
+    // Trash icon
+    const trashIcon = document.createElement('button');
+    trashIcon.setAttribute('data-name', munkName);
+    trashIcon.classList.add('material-symbols-outlined');
+    const trashIconText = document.createTextNode('delete');
+    trashIcon.appendChild(trashIconText);
+
+
     munk1Node.appendChild(munk1TextNode);
+    munk1Node.appendChild(trashIcon);
 
     shelf.appendChild(munk1Node)
   }
 
-  const munks = Array.from(document.querySelectorAll('li'))
+  const munks = Array.from(document.querySelectorAll('li button'))
+
+  
 
   munks.forEach((item) => {
     item.addEventListener('click', removeMunk)
@@ -50,9 +62,9 @@ function printMunkShelf() {
 
 
 
-function removeMunk(event) {
+function removeMunk(event) {  
 
-  const index = munkarDbTest4.indexOf(event.target.innerHTML)
+  const index = munkarDbTest4.indexOf(event.target.dataset.name)
   if (index > -1) {
     munkarDbTest4.splice(index, 1);
     printMunkShelf();
