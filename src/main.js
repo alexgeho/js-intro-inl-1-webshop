@@ -7,6 +7,7 @@ const shelf = document.querySelector('#munkarTest4')
 printMunkShelf();
 
 const addMunkBtn = document.querySelector('#addMunkBtn')
+
 addMunkBtn.addEventListener('click', addNewMunk)
 
 const newMunkName = document.querySelector('#newMunkField')
@@ -23,37 +24,41 @@ function addNewMunk() {
   }
 }
 
+
+
 function printMunkShelf() {
 
   shelf.innerHTML = '';
+
   for (let i = 0; i < munkarDbTest4.length; i++) {
     const munkName = munkarDbTest4[i];
     const munk1Node = document.createElement('li');
     const munk1TextNode = document.createTextNode(munkName);
     munk1Node.appendChild(munk1TextNode);
+
     shelf.appendChild(munk1Node)
   }
 
-}
+  const munks = Array.from(document.querySelectorAll('li'))
 
- const munks = Array.from(document.querySelectorAll('li'))
   munks.forEach((item) => {
     item.addEventListener('click', removeMunk)
   })
 
-  console.log(munks);
 
+}
 
 
 
 function removeMunk(event) {
 
-const index = munkarDbTest4.indexOf(event.target.innerHTML)
+  const index = munkarDbTest4.indexOf(event.target.innerHTML)
   if (index > -1) {
     munkarDbTest4.splice(index, 1);
     printMunkShelf();
   }
 }
+
 
 
 
