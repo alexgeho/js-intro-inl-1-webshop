@@ -1,21 +1,62 @@
 /// Loopar with munkar
 
-const munkarDbTest4  = ['honey  munk', 'vanilla munk', 'blueberry munk', 'cinnamon munk', 'stawberry munk', 'mango munk', 'banana munk'];
+const munkarDbTest4 = ['honey  munk', 'vanilla munk', 'blueberry munk', 'cinnamon munk', 'stawberry munk', 'mango munk', 'banana munk'];
 
 const shelf = document.querySelector('#munkarTest4')
 
-for (let i = 0; i < munkarDbTest4.length; i++) {
- 
-  const munkName = munkarDbTest4[i];
-  const munk1Node = document.createElement('li');
-  const munk1TextNode = document.createTextNode(munkName);
-  munk1Node.appendChild(munk1TextNode);
-  shelf.appendChild(munk1Node)
+printMunkShelf();
 
-  console.log(munkName);
-  
-  
+const addMunkBtn = document.querySelector('#addMunkBtn')
+addMunkBtn.addEventListener('click', addNewMunk)
+
+const newMunkName = document.querySelector('#newMunkField')
+
+function addNewMunk() {
+
+  if (newMunkName.value.length === 0) {
+    return;
+  }
+
+  if (munkarDbTest4.indexOf(newMunkName.value) === -1) {
+    munkarDbTest4.push(newMunkName.value)
+    printMunkShelf();
+  }
 }
+
+function printMunkShelf() {
+
+  shelf.innerHTML = '';
+  for (let i = 0; i < munkarDbTest4.length; i++) {
+    const munkName = munkarDbTest4[i];
+    const munk1Node = document.createElement('li');
+    const munk1TextNode = document.createTextNode(munkName);
+    munk1Node.appendChild(munk1TextNode);
+    shelf.appendChild(munk1Node)
+  }
+
+}
+
+ const munks = Array.from(document.querySelectorAll('li'))
+  munks.forEach((item) => {
+    item.addEventListener('click', removeMunk)
+  })
+
+  console.log(munks);
+
+
+
+
+function removeMunk(event) {
+
+const index = munkarDbTest4.indexOf(event.target.innerHTML)
+  if (index > -1) {
+    munkarDbTest4.splice(index, 1);
+    printMunkShelf();
+  }
+}
+
+
+
 
 // const munk1Name = munkarDbTest4[0];
 // const munk1Node = document.createElement('li')
@@ -30,45 +71,23 @@ for (let i = 0; i < munkarDbTest4.length; i++) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /// ARRAY with munkar
 
 const munkarDb = ['honey', 'vanilla', 'blueberry', 'cinnamon', 'stawberry', 'mango', 'banana'];
 
-console.log('munkar before splice', munkarDb);
+// console.log('munkar before splice', munkarDb);
 
 munkarDb.splice(4, 2)
 
-console.log('munkar after splice', munkarDb);
+// console.log('munkar after splice', munkarDb);
 
 munkarDb.sort()
 
-console.log('sort:::::', munkarDb);
+// console.log('sort:::::', munkarDb);
 
 const hasHoney = munkarDb.indexOf('honey')
 
-console.log('hasHoney:', hasHoney);
-
-
-
+// console.log('hasHoney:', hasHoney);
 
 const munkar = document.querySelector('#munkar')
 
@@ -118,8 +137,8 @@ const productsHidenObject = {
 
 const hidenProd = document.querySelector('.products-hide')
 
-hidenProd.innerHTML = 
-`<p>${productsHidenObject.name}</p>
+hidenProd.innerHTML =
+  `<p>${productsHidenObject.name}</p>
 <p>${productsHidenObject.price}</p>`
 
 
