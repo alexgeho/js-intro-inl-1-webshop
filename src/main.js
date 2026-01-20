@@ -1,220 +1,270 @@
-const msgDiv = document.querySelector('#msg');
+// const msgDiv = document.querySelector('#msg');
 
-const munkarDbTest4 = [
+// const munkarDbTest4 = [
 
-  {
-    name: 'honey munk 3',
-    count: 0,
-  },
+//   {
+//     name: 'honey munk 3',
+//     count: 0,
+//   },
 
-  {
-    name: 'vanila munk 2',
-    count: 0,
-  },
+//   {
+//     name: 'vanila munk 2',
+//     count: 0,
+//   },
 
-  {
-    name: 'blueberry munk 2',
-    count: 0,
-  },
+//   {
+//     name: 'blueberry munk 2',
+//     count: 0,
+//   },
+// ];
+
+// const coffeeDb = [
+
+//   {
+//     name: 'Americano',
+//     count: 0,
+//   },
+
+//   {
+//     name: 'Latte',
+//     count: 0,
+//   },
+
+//   {
+//     name: 'Espresso',
+//     count: 0,
+//   },
+// ];
+
+const products = [
+  // MUNKAR – CLASSIC
+  { name: 'Honey Munk', price: 25, rating: 4.2, category: 'munk-classic', images: ['1.jpg', '2.jpg'] },
+  { name: 'Vanilla Munk', price: 22, rating: 3.8, category: 'munk-classic', images: ['1.jpg', '2.jpg'] },
+  { name: 'Chocolate Munk', price: 28, rating: 4.7, category: 'munk-classic', images: ['1.jpg', '2.jpg'] },
+
+  // MUNKAR – VEGAN
+  { name: 'Vegan Berry Munk', price: 30, rating: 4.3, category: 'munk-vegan', images: ['1.jpg', '2.jpg'] },
+  { name: 'Vegan Lemon Munk', price: 29, rating: 4.1, category: 'munk-vegan', images: ['1.jpg', '2.jpg'] },
+  { name: 'Vegan Cocoa Munk', price: 31, rating: 4.5, category: 'munk-vegan', images: ['1.jpg', '2.jpg'] },
+
+  // MUNKAR – PROTEIN
+  { name: 'Protein Peanut Munk', price: 35, rating: 4.8, category: 'munk-protein', images: ['1.jpg', '2.jpg'] },
+  { name: 'Protein Banana Munk', price: 34, rating: 4.4, category: 'munk-protein', images: ['1.jpg', '2.jpg'] },
+  { name: 'Protein Almond Munk', price: 36, rating: 4.9, category: 'munk-protein', images: ['1.jpg', '2.jpg'] },
+  { name: 'Protein Cocoa Munk', price: 37, rating: 4.6, category: 'munk-protein', images: ['1.jpg', '2.jpg'] },
+
+  // DRINKS
+  { name: 'Americano', price: 30, rating: 4.0, category: 'drink', images: ['1.jpg', '2.jpg'] },
+  { name: 'Latte', price: 32, rating: 4.4, category: 'drink', images: ['1.jpg', '2.jpg'] },
+  { name: 'Orange Juice', price: 25, rating: 4.1, category: 'drink', images: ['1.jpg', '2.jpg'] },
+  { name: 'Mineral Water', price: 20, rating: 3.9, category: 'drink', images: ['1.jpg', '2.jpg'] },
 ];
 
-const coffeeDb = [
 
-  {
-    name: 'Americano',
-    count: 0,
-  },
+/* START - catalog filter */
 
-  {
-    name: 'Latte',
-    count: 0,
-  },
+const list = document.querySelector('#productsList');
+const filter = document.querySelector('#categoryFilter');
 
-  {
-    name: 'Espresso',
-    count: 0,
-  },
-];
+filter.addEventListener('change', () => {
+  renderProducts(filter.value);
+});
 
-const shelf = document.querySelector('#munkarTest4')
-const shelfCoffee = document.querySelector('#coffee')
+function renderProducts(category) {
+  list.innerHTML = '';
 
-const addMunkBtn = document.querySelector('#addMunkBtn')
-
-const newMunkName = document.querySelector('#newMunkField')
-
-const munkText = newMunkName.value;
-
-const index = munkarDbTest4.findIndex(singleMunkObject => singleMunkObject.name === munkText)
-
-
-
-const ticker = setInterval(printConsoleMsg, 2000);
-let intervalCounter = 0;
-
-function printConsoleMsg() {
-console.log('tick:::::', intervalCounter);
-intervalCounter++;
-
-if (intervalCounter > 10) {
-  clearInterval(ticker)
-}
-
-}
-
-function showAddedMessage() {
-  msgDiv.innerHTML = 'Munk lades till';
-  setTimeout(clearMessage, 2000)
-}
-
-function clearMessage(params) {
-  msgDiv.innerHTML = '';
+  products
+    .filter(p => !category || p.category === category)
+    .forEach(p => {
+      const li = document.createElement('li');
+      li.textContent = `${p.name} – ${p.price} kr`;
+      list.appendChild(li);
+    });
 }
 
 
-printMunkShelf();
-printCoffeeShelf();
+/* END - catalog */
 
 
-addMunkBtn.addEventListener('click', addNewMunk)
+// const shelf = document.querySelector('#munkarTest4')
+// const shelfCoffee = document.querySelector('#coffee')
 
-function addNewMunk() {
-  const munkText = newMunkName.value.trim();
+// const addMunkBtn = document.querySelector('#addMunkBtn')
 
-  if (!munkText) return;
+// const newMunkName = document.querySelector('#newMunkField')
 
-  const index = munkarDbTest4.findIndex(
-    munk => munk.name === munkText
-  );
+// const munkText = newMunkName.value;
 
-  if (index === -1) {
-    munkarDbTest4.push({ name: munkText, count: 1 });
-    showAddedMessage();
-  } else {
-    munkarDbTest4[index].count++;
-    showAddedMessage();
-  }
-
-  printMunkShelf();
-  showAddedMessage();
-}
-
-/* 
-Prins <li> elements of the donuts
-*/
-
-function printMunkShelf() {
-
-  shelf.innerHTML = '';
-
-  for (let i = 0; i < munkarDbTest4.length; i++) {
-
-    const _munkName = munkarDbTest4[i].name;
-    const _munkCount = munkarDbTest4[i].count;
-
-    const munkName = _munkName + ' ( ' + _munkCount + ' )';
-
-    const munk1Node = document.createElement('li');
-    const munk1TextNode = document.createTextNode(munkName);
-
-    // Trash icon
-    const trashIcon = document.createElement('button');
-    trashIcon.setAttribute('data-name', _munkName);
-    trashIcon.classList.add('material-symbols-outlined');
-    const trashIconText = document.createTextNode('delete');
-    trashIcon.appendChild(trashIconText);
+// const index = munkarDbTest4.findIndex(singleMunkObject => singleMunkObject.name === munkText)
 
 
-    munk1Node.appendChild(munk1TextNode);
-    munk1Node.appendChild(trashIcon);
 
-    shelf.appendChild(munk1Node)
-  }
+// const ticker = setInterval(printConsoleMsg, 2000);
+// let intervalCounter = 0;
 
-  const munks = Array.from(document.querySelectorAll('li button'))
+// function printConsoleMsg() {
+// console.log('tick:::::', intervalCounter);
+// intervalCounter++;
 
-  munks.forEach((item) => {
-    item.addEventListener('click', removeMunk)
-  })
-}
+// if (intervalCounter > 10) {
+//   clearInterval(ticker)
+// }
 
+// }
 
-/* 
-Remove munks
-*/
+// function showAddedMessage() {
+//   msgDiv.innerHTML = 'Munk lades till';
+//   setTimeout(clearMessage, 2000)
+// }
 
-function removeMunk(event) {
-
-  const clickedMunk = event.target.dataset.name;
-
-
-  const index = munkarDbTest4.findIndex(singleMunkObject => singleMunkObject.name === clickedMunk)
-  if (index > -1) {
-    munkarDbTest4.splice(index, 1);
-    printMunkShelf();
-  }
-}
-
-/* 
-Prins <li> elements of the coffee
-*/
-
-function printCoffeeShelf() {
-
-  shelfCoffee.innerHTML = '';
-
-  for (let i = 0; i < coffeeDb.length; i++) {
-
-    const _coffeeName = coffeeDb[i].name;
-    const _coffeeCount = coffeeDb[i].count;
-
-    const coffeeName = _coffeeName + ' ( ' + _coffeeCount + ' )';
-
-    const coffeeNode = document.createElement('li');
-    const coffeeTextNode = document.createTextNode(coffeeName);
-
-    // Trash icon
-    const trashIcon = document.createElement('button');
-    trashIcon.setAttribute('data-name', _coffeeName);
-    trashIcon.classList.add('material-symbols-outlined');
-    const trashIconText = document.createTextNode('delete');
-    trashIcon.appendChild(trashIconText);
+// function clearMessage(params) {
+//   msgDiv.innerHTML = '';
+// }
 
 
-    coffeeNode.appendChild(coffeeTextNode);
-    coffeeNode.appendChild(trashIcon);
+// printMunkShelf();
+// printCoffeeShelf();
 
-    shelfCoffee.appendChild(coffeeNode)
-  }
 
-  const coffee = Array.from(document.querySelectorAll('li button'))
+// addMunkBtn.addEventListener('click', addNewMunk)
 
-  coffee.forEach((item) => {
-    item.addEventListener('click', removeCoffee)
-  })
-}
+// function addNewMunk() {
+//   const munkText = newMunkName.value.trim();
 
-/* 
-Remove munks
-*/
+//   if (!munkText) return;
 
-function removeCoffee(event) {
+//   const index = munkarDbTest4.findIndex(
+//     munk => munk.name === munkText
+//   );
 
-  const clickedCoffee = event.target.dataset.name;
+//   if (index === -1) {
+//     munkarDbTest4.push({ name: munkText, count: 1 });
+//     showAddedMessage();
+//   } else {
+//     munkarDbTest4[index].count++;
+//     showAddedMessage();
+//   }
 
-  const index = coffeeDb.findIndex(singleCoffeeObject => singleCoffeeObject.name === clickedCoffee)
-  if (index > -1) {
-    coffeeDb.splice(index, 1);
-    printCoffeeShelf();
-  }
-}
+//   printMunkShelf();
+//   showAddedMessage();
+// }
 
-///// BURGER - 15_-_meny-knapp_med_javascript///
+// /* 
+// Prins <li> elements of the donuts
+// */
+
+// function printMunkShelf() {
+
+//   shelf.innerHTML = '';
+
+//   for (let i = 0; i < munkarDbTest4.length; i++) {
+
+//     const _munkName = munkarDbTest4[i].name;
+//     const _munkCount = munkarDbTest4[i].count;
+
+//     const munkName = _munkName + ' ( ' + _munkCount + ' )';
+
+//     const munk1Node = document.createElement('li');
+//     const munk1TextNode = document.createTextNode(munkName);
+
+//     // Trash icon
+//     const trashIcon = document.createElement('button');
+//     trashIcon.setAttribute('data-name', _munkName);
+//     trashIcon.classList.add('material-symbols-outlined');
+//     const trashIconText = document.createTextNode('delete');
+//     trashIcon.appendChild(trashIconText);
+
+
+//     munk1Node.appendChild(munk1TextNode);
+//     munk1Node.appendChild(trashIcon);
+
+//     shelf.appendChild(munk1Node)
+//   }
+
+//   const munks = Array.from(document.querySelectorAll('li button'))
+
+//   munks.forEach((item) => {
+//     item.addEventListener('click', removeMunk)
+//   })
+// }
+
+
+// /* 
+// Remove munks
+// */
+
+// function removeMunk(event) {
+
+//   const clickedMunk = event.target.dataset.name;
+
+
+//   const index = munkarDbTest4.findIndex(singleMunkObject => singleMunkObject.name === clickedMunk)
+//   if (index > -1) {
+//     munkarDbTest4.splice(index, 1);
+//     printMunkShelf();
+//   }
+// }
+
+// /* 
+// Prins <li> elements of the coffee
+// */
+
+// function printCoffeeShelf() {
+
+//   shelfCoffee.innerHTML = '';
+
+//   for (let i = 0; i < coffeeDb.length; i++) {
+
+//     const _coffeeName = coffeeDb[i].name;
+//     const _coffeeCount = coffeeDb[i].count;
+
+//     const coffeeName = _coffeeName + ' ( ' + _coffeeCount + ' )';
+
+//     const coffeeNode = document.createElement('li');
+//     const coffeeTextNode = document.createTextNode(coffeeName);
+
+//     // Trash icon
+//     const trashIcon = document.createElement('button');
+//     trashIcon.setAttribute('data-name', _coffeeName);
+//     trashIcon.classList.add('material-symbols-outlined');
+//     const trashIconText = document.createTextNode('delete');
+//     trashIcon.appendChild(trashIconText);
+
+
+//     coffeeNode.appendChild(coffeeTextNode);
+//     coffeeNode.appendChild(trashIcon);
+
+//     shelfCoffee.appendChild(coffeeNode)
+//   }
+
+//   const coffee = Array.from(document.querySelectorAll('li button'))
+
+//   coffee.forEach((item) => {
+//     item.addEventListener('click', removeCoffee)
+//   })
+// }
+
+// /* 
+// Remove munks
+// */
+
+// function removeCoffee(event) {
+
+//   const clickedCoffee = event.target.dataset.name;
+
+//   const index = coffeeDb.findIndex(singleCoffeeObject => singleCoffeeObject.name === clickedCoffee)
+//   if (index > -1) {
+//     coffeeDb.splice(index, 1);
+//     printCoffeeShelf();
+//   }
+// }
+
+
+/* START - BURGER MENU */
+
 const openCloseNavMenu = document.querySelector('#openCloseNavMenu')
 const navBugerJs = document.querySelector('#navBugerJs')
 const menuLinks = document.querySelectorAll('#menuLinks a').forEach(a => a.textContent = a.textContent.toUpperCase())
-
-
 
 openCloseNavMenu.addEventListener('click', toggleMenuOpenState)
 navBugerJs.addEventListener('click', toggleMenuOpenState)
@@ -223,33 +273,37 @@ function toggleMenuOpenState() {
   openCloseNavMenu.classList.toggle('open')
   navBugerJs.classList.toggle('open')
 }
-/* for buttons */
 
-const main = document.querySelector('main');
-
-/////// Munkar Button
-
-const btn = document.querySelector('#btnCategories')
-const list = document.querySelector('#munkarTest4')
+/* END - BURGER MENU */
 
 
-btn.addEventListener('click', () => {
-  const isOpen = list.classList.toggle('open')
-  main.classList.toggle('categories-open', isOpen)
+// /* for buttons */
 
-  btn.textContent = isOpen ? 'Hide munkar' : 'Munkar'
-})
+// const main = document.querySelector('main');
 
-/////// Coffee Button
+// /////// Munkar Button
 
-const btnCoffee = document.querySelector('#btnCategoriesCoffee')
-const listCoffee = document.querySelector('#coffee')
+// const btn = document.querySelector('#btnCategories')
+// const list = document.querySelector('#munkarTest4')
 
 
-btnCoffee.addEventListener('click', () => {
-  const isOpen = listCoffee.classList.toggle('open')
-  main.classList.toggle('categories-open', isOpen)
+// btn.addEventListener('click', () => {
+//   const isOpen = list.classList.toggle('open')
+//   main.classList.toggle('categories-open', isOpen)
 
-  btnCoffee.textContent = isOpen ? 'Hide coffee' : 'Coffee'
-})
+//   btn.textContent = isOpen ? 'Hide munkar' : 'Munkar'
+// })
+
+// /////// Coffee Button
+
+// const btnCoffee = document.querySelector('#btnCategoriesCoffee')
+// const listCoffee = document.querySelector('#coffee')
+
+
+// btnCoffee.addEventListener('click', () => {
+//   const isOpen = listCoffee.classList.toggle('open')
+//   main.classList.toggle('categories-open', isOpen)
+
+//   btnCoffee.textContent = isOpen ? 'Hide coffee' : 'Coffee'
+// })
 
