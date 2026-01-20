@@ -1,68 +1,84 @@
-/// Loopar with munkar + object i arrey
-
-
-const honeyMunk = {
-  name: 'honey munk 3',
-  count: 0,
-}
-
-const vanilaMunk = {
-  name: 'vanila munk 2',
-  count: 0,
-}
-
-const blueberryMunk = {
-  name: 'blueberry munk 2',
-  count: 0,
-}
-
+const msgDiv = document.querySelector('#msg');
 
 const munkarDbTest4 = [
-  honeyMunk, vanilaMunk, blueberryMunk,
-  // 'vanilla munk', 'blueberry munk', 'cinnamon munk', 'stawberry munk', 'mango munk', 'banana munk'
+
+  {
+    name: 'honey munk 3',
+    count: 0,
+  },
+
+  {
+    name: 'vanila munk 2',
+    count: 0,
+  },
+
+  {
+    name: 'blueberry munk 2',
+    count: 0,
+  },
 ];
-
-console.log('munkarDbTest4::::', munkarDbTest4[0][0]);
-
 
 const shelf = document.querySelector('#munkarTest4')
 
-printMunkShelf();
-
 const addMunkBtn = document.querySelector('#addMunkBtn')
-
-addMunkBtn.addEventListener('click', addNewMunk)
 
 const newMunkName = document.querySelector('#newMunkField')
 
+const munkText = newMunkName.value;
+
+const index = munkarDbTest4.findIndex(singleMunkObject => singleMunkObject.name === munkText)
+
+const munkarDb = ['honey', 'vanilla', 'blueberry', 'cinnamon', 'stawberry', 'mango', 'banana'];
+
+
+const ticker = setInterval(printConsoleMsg, 2000);
+let intervalCounter = 0;
+
+function printConsoleMsg() {
+console.log('tick:::::', intervalCounter);
+intervalCounter++;
+
+if (intervalCounter > 10) {
+  clearInterval(ticker)
+}
+
+}
+
+function showAddedMessage() {
+  msgDiv.innerHTML = 'Munk lades till';
+  setTimeout(clearMessage, 2000)
+}
+
+function clearMessage(params) {
+  msgDiv.innerHTML = '';
+}
+
+
+
+
+printMunkShelf();
+
+addMunkBtn.addEventListener('click', addNewMunk)
+
 function addNewMunk() {
+  const munkText = newMunkName.value.trim();
 
-  if (newMunkName.value.length === 0) {
-    return;
-  }
+  if (!munkText) return;
 
-  // kollar om munk redan existerar som ett objekt
-  // push in ett objekt i arrayen ist'llet
-
-  const munkText = newMunkName.value;
-
-  const index = munkarDbTest4.findIndex(singleMunkObject => singleMunkObject.name === munkText)
-
-  console.log('INDEX :::::', index);
-
+  const index = munkarDbTest4.findIndex(
+    munk => munk.name === munkText
+  );
 
   if (index === -1) {
-    munkarDbTest4.push({
-      name: munkText,
-      count: 1,
-    })
-    printMunkShelf();
+    munkarDbTest4.push({ name: munkText, count: 1 });
+    showAddedMessage();
   } else {
-    // munk finns redan, ;ka antalet istället
-    console.log('ELSE:::::', munkarDbTest4[index]);
-    munkarDbTest4[index].count += 1
+    munkarDbTest4[index].count++;
+    showAddedMessage();
   }
+
   printMunkShelf();
+  showAddedMessage();
 }
 
 /* 
@@ -73,21 +89,19 @@ function printMunkShelf() {
 
   shelf.innerHTML = '';
 
-
-
   for (let i = 0; i < munkarDbTest4.length; i++) {
-    
+
     const _munkName = munkarDbTest4[i].name;
     const _munkCount = munkarDbTest4[i].count;
-    
+
     const munkName = _munkName + ' ( ' + _munkCount + ' )';
-    
+
     const munk1Node = document.createElement('li');
     const munk1TextNode = document.createTextNode(munkName);
 
     // Trash icon
     const trashIcon = document.createElement('button');
-    trashIcon.setAttribute('data-name', munkName);
+    trashIcon.setAttribute('data-name', _munkName);
     trashIcon.classList.add('material-symbols-outlined');
     const trashIconText = document.createTextNode('delete');
     trashIcon.appendChild(trashIconText);
@@ -100,8 +114,6 @@ function printMunkShelf() {
   }
 
   const munks = Array.from(document.querySelectorAll('li button'))
-
-
 
   munks.forEach((item) => {
     item.addEventListener('click', removeMunk)
@@ -128,7 +140,6 @@ function removeMunk(event) {
 
 
 
-
 // const munk1Name = munkarDbTest4[0];
 // const munk1Node = document.createElement('li')
 // const munk1TextNode = document.createTextNode(munk1Name);
@@ -143,8 +154,6 @@ function removeMunk(event) {
 
 
 /// ARRAY with munkar
-
-const munkarDb = ['honey', 'vanilla', 'blueberry', 'cinnamon', 'stawberry', 'mango', 'banana'];
 
 // console.log('munkar before splice', munkarDb);
 
