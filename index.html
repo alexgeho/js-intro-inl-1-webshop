@@ -13,60 +13,22 @@
 
     main {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      flex-direction: column;
+    }
+
+
+    /* 
+HEADER STARTS
+*/
+    header {
+      display: flex;
+      margin: 20px 0 20px;
     }
 
     header h1 {
       font-size: 1.5rem;
       font-weight: 100;
-    }
-
-    nav {
-      display: flex;
-      gap: 10px;
-    }
-
-    nav a {
-      text-decoration: none;
-      font-size: 1.5rem;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .products-hide {
-      display: none;
-    }
-
-    .list {
-      display: none;
-    }
-
-    .list.open {
-      display: block;
-    }
-
-    main.categories-open {
-      background-color: #c7ffae;
-    }
-
-    aside {
-      display: flex;
-      flex-direction: column;
-      width: 30%;
-    }
-
-    button,
-    input {
-      padding: 5px;
-      margin: 5px;
-    }
-
-    input {
-      font-size: 16px;
-      border: 1px solid #999;
-      border-radius: 4px;
+      margin: 0;
     }
 
     #navBugerJs {
@@ -80,11 +42,28 @@
     }
 
     #navBugerJs.open {
-      position: relative;
-      width: 20%;
-      background-color: #999;
+      position: absolute;
+      max-width: 80%;
+      background-color: #eeeeee;
       display: inline-block;
 
+      ul {
+        list-style: none;
+
+        a {
+          text-decoration: none;
+          font-size: 2rem;
+          color: #000;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    #navBugerJs ul li+li {
+      margin-top: 10px;
     }
 
     .burger {
@@ -131,8 +110,55 @@
       transform: rotate(-45deg)
     }
 
+    /* 
+HEADER ENDS
+*/
+    .products-hide {
+      display: none;
+    }
+
+    .list {
+      display: none;
+    }
+
+    .list.open {
+      display: block;
+    }
+
+    main.categories-open {
+      background-color: #c7ffae;
+    }
+
+    aside {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+    }
+
+    button,
+    input {
+      padding: 5px;
+      margin: 5px;
+    }
+
+    input {
+      font-size: 16px;
+      border: 1px solid #999;
+      border-radius: 4px;
+    }
+
     .products-hide p {
       margin: 8px 0;
+    }
+
+    /* Categories START */
+
+    #munkarTest4 {
+      display: none;
+    }
+
+    #munkarTest4.open {
+      display: block;
     }
 
 
@@ -154,6 +180,14 @@
       border: none;
       background: transparent;
     }
+
+    #coffee {
+      display: none;
+    }
+
+    #coffee.open {
+      display: block;
+    }
   </style>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
@@ -165,60 +199,43 @@
   <header>
 
     <h1>Jästson's webbshop av godaste munkar i Snaskköping</h1>
-    <nav>
-      <a href="#">Hem</a>
-      <a href="#">Kategorier</a>
-      <a href="#">Om oss</a>
-      <a href="#">Kontakt</a>
-    </nav>
+    <div>
+      <button id="openCloseNavMenu" class="burger">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="navBugerJs">
+        <ul id="menuLinks">
+          <li><a href="https://www.google.com" target="_blank">Hem</a></li>
+          <li><a href="#home">Kategorier</a></li>
+          <li><a href="#home">Om oss</a></li>
+          <li><a href="#home">FAQ</a></li>
+          <li><a href="#home">Contact</a></li>
+        </ul>
+
+      </nav>
+    </div>
   </header>
 
   <main>
 
     <aside>
-      <div>
-        <button id="subtract">-</button>
-        <input id="currentCount" type="number" min="1" max="20" step="1" value="1">
-        <button id="add">+</button>
-      </div>
-      <button id="btnBackground">Change background-color</button>
-      <button id="btnCategories">Show Categories</button>
-      <div class="filter"></div>
-      <div class="list">
-        <a href="">Munk Protein</a>
-        <a href="">Munk Veggie</a>
-        <a href="">Munk Eco</a>
-      </div>
 
-      <div>
-        <button id="openCloseNavMenu" class="burger">
-          <span></span><span></span><span></span>
-        </button>
+      <button id="btnCategories">Munkar</button>
+      <ul id="munkarTest4"></ul>
 
-        <nav id="navBugerJs">
-          <ul id="menuLinks">
-            <li><a href="https://www.google.com" target="_blank">Line 1</a></li>
-            <li><a href="#home">Line 2</a></li>
-            <li><a href="#home">Line 3</a></li>
-            <li><a href="#home">Line 4</a></li>
-          </ul>
+      <button id="btnCategoriesCoffee">Coffee</button>
+      <ul id="coffee"></ul>
 
-        </nav>
-      </div>
 
-      <button id="clickMe">Klicka på mig</button>
+
     </aside>
 
     <section>
-      <div id="munkar"></div>
-      <div class="products"></div>
-      <div class="products-hide"></div>
 
       <div id="productsTest4">
 
         <div id="msg"></div>
-
-        <ul id="munkarTest4"></ul>
 
         <label>
           Lägg till krydda:

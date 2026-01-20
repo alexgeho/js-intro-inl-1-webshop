@@ -18,7 +18,26 @@ const munkarDbTest4 = [
   },
 ];
 
+const coffeeDb = [
+
+  {
+    name: 'Americano',
+    count: 0,
+  },
+
+  {
+    name: 'Latte',
+    count: 0,
+  },
+
+  {
+    name: 'Espresso',
+    count: 0,
+  },
+];
+
 const shelf = document.querySelector('#munkarTest4')
+const shelfCoffee = document.querySelector('#coffee')
 
 const addMunkBtn = document.querySelector('#addMunkBtn')
 
@@ -28,7 +47,6 @@ const munkText = newMunkName.value;
 
 const index = munkarDbTest4.findIndex(singleMunkObject => singleMunkObject.name === munkText)
 
-const munkarDb = ['honey', 'vanilla', 'blueberry', 'cinnamon', 'stawberry', 'mango', 'banana'];
 
 
 const ticker = setInterval(printConsoleMsg, 2000);
@@ -54,9 +72,9 @@ function clearMessage(params) {
 }
 
 
-
-
 printMunkShelf();
+printCoffeeShelf();
+
 
 addMunkBtn.addEventListener('click', addNewMunk)
 
@@ -137,46 +155,61 @@ function removeMunk(event) {
   }
 }
 
+/* 
+Prins <li> elements of the coffee
+*/
+
+function printCoffeeShelf() {
+
+  shelfCoffee.innerHTML = '';
+
+  for (let i = 0; i < coffeeDb.length; i++) {
+
+    const _coffeeName = coffeeDb[i].name;
+    const _coffeeCount = coffeeDb[i].count;
+
+    const coffeeName = _coffeeName + ' ( ' + _coffeeCount + ' )';
+
+    const coffeeNode = document.createElement('li');
+    const coffeeTextNode = document.createTextNode(coffeeName);
+
+    // Trash icon
+    const trashIcon = document.createElement('button');
+    trashIcon.setAttribute('data-name', _coffeeName);
+    trashIcon.classList.add('material-symbols-outlined');
+    const trashIconText = document.createTextNode('delete');
+    trashIcon.appendChild(trashIconText);
 
 
+    coffeeNode.appendChild(coffeeTextNode);
+    coffeeNode.appendChild(trashIcon);
 
-// const munk1Name = munkarDbTest4[0];
-// const munk1Node = document.createElement('li')
-// const munk1TextNode = document.createTextNode(munk1Name);
+    shelfCoffee.appendChild(coffeeNode)
+  }
 
-// munk1Node.appendChild(munk1TextNode);
+  const coffee = Array.from(document.querySelectorAll('li button'))
 
-// shelf.appendChild(munk1Node);
+  coffee.forEach((item) => {
+    item.addEventListener('click', removeCoffee)
+  })
+}
 
-// console.log('munk1Name:::::', munk1Name);
+/* 
+Remove munks
+*/
 
+function removeCoffee(event) {
 
+  const clickedCoffee = event.target.dataset.name;
 
+  const index = coffeeDb.findIndex(singleCoffeeObject => singleCoffeeObject.name === clickedCoffee)
+  if (index > -1) {
+    coffeeDb.splice(index, 1);
+    printCoffeeShelf();
+  }
+}
 
-/// ARRAY with munkar
-
-// console.log('munkar before splice', munkarDb);
-
-munkarDb.splice(4, 2)
-
-// console.log('munkar after splice', munkarDb);
-
-munkarDb.sort()
-
-// console.log('sort:::::', munkarDb);
-
-const hasHoney = munkarDb.indexOf('honey')
-
-// console.log('hasHoney:', hasHoney);
-
-const munkar = document.querySelector('#munkar')
-
-munkar.innerHTML = munkarDb.join(' ')
-
-
-
-
-///// 15_-_meny-knapp_med_javascript + BURGER ///
+///// BURGER - 15_-_meny-knapp_med_javascript///
 const openCloseNavMenu = document.querySelector('#openCloseNavMenu')
 const navBugerJs = document.querySelector('#navBugerJs')
 const menuLinks = document.querySelectorAll('#menuLinks a').forEach(a => a.textContent = a.textContent.toUpperCase())
@@ -190,115 +223,33 @@ function toggleMenuOpenState() {
   openCloseNavMenu.classList.toggle('open')
   navBugerJs.classList.toggle('open')
 }
+/* for buttons */
 
+const main = document.querySelector('main');
 
-
-
-///// toDo - chaining for menu links to upper case
-/////
-/////
-
-const products = [
-  { id: 1, name: 'Chokladmunk', price: 25, category: 'Choklad' },
-  { id: 2, name: 'Vaniljmunk', price: 22, category: 'Vanilj' }
-];
-
-const productsHiden = [
-  { id: 1, name: 'Choklad', price: 25, category: 'Choklad-hiden' },
-  { id: 2, name: 'Vanilj', price: 22, category: 'Vanilj-hiden' }
-];
-
-// TESTS
-const productsHidenObject = {
-  name: 'silk',
-  price: 250000,
-  category: 'hiden',
-}
-
-const hidenProd = document.querySelector('.products-hide')
-
-hidenProd.innerHTML =
-  `<p>${productsHidenObject.name}</p>
-<p>${productsHidenObject.price}</p>`
-
-
-function showHiden() {
-  document.querySelector('.products-hide').style.display = 'block'
-}
-
-const btn1 = document.querySelector('#clickMe')
-
-btn1.addEventListener('click', showHiden)
-
-
-////////////////////////////// MY TESTS /////////
-
-const minus = document.querySelector('#subtract');
-const plus = document.querySelector('#add');
-const currentCount = document.querySelector('#currentCount');
-
-// console.log(minus, plus, currentCount);
-
-minus.addEventListener('click', subtract)
-
-function subtract() {
-  console.log(currentCount.value - 1);
-  currentCount.value -= 1;
-}
-
-function add() {
-  currentCount.value = Number(currentCount.value) + 1;
-}
-
-plus.addEventListener('click', add)
-
-
-
-///////
+/////// Munkar Button
 
 const btn = document.querySelector('#btnCategories')
-const list = document.querySelector('.list')
-const main = document.querySelector('main')
+const list = document.querySelector('#munkarTest4')
+
 
 btn.addEventListener('click', () => {
   const isOpen = list.classList.toggle('open')
   main.classList.toggle('categories-open', isOpen)
 
-  btn.textContent = isOpen ? 'Hide categories' : 'Show categories'
+  btn.textContent = isOpen ? 'Hide munkar' : 'Munkar'
 })
 
+/////// Coffee Button
+
+const btnCoffee = document.querySelector('#btnCategoriesCoffee')
+const listCoffee = document.querySelector('#coffee')
 
 
-const btnBackground = document.querySelector('#btnBackground')
+btnCoffee.addEventListener('click', () => {
+  const isOpen = listCoffee.classList.toggle('open')
+  main.classList.toggle('categories-open', isOpen)
 
-btnBackground.addEventListener('click', changBackground)
+  btnCoffee.textContent = isOpen ? 'Hide coffee' : 'Coffee'
+})
 
-function changBackground() {
-  document.body.style.backgroundColor = 'green';
-}
-
-
-// //NEXT STEP
-// function renderProducts(list) {
-//   const container = document.querySelector('.products');
-//   container.innerHTML = '';
-
-//   list.forEach(product => {
-//     const div = document.createElement('div');
-//     div.textContent = `${product.name} – ${product.price} kr`;
-//     container.appendChild(div);
-//   });
-// }
-
-// document.querySelector('#clickMe').addEventListener('click', () => {
-//   renderProducts(products);
-//   alert('Hej Världen!');
-// });
-
-// // Datum
-// console.log(new Date().toLocaleDateString());
-
-// // Timer
-// setTimeout(() => {
-//   console.log('Webshop ready');
-// }, 2000);

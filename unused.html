@@ -1,0 +1,95 @@
+<!-- + Num - -->
+
+<div>
+    <button id="subtract">-</button>
+    <input id="currentCount" type="number" min="1" max="20" step="1" value="1">
+    <button id="add">+</button>
+</div>
+
+<!-- ////////////////////////////// JS TESTS ///////// -->
+
+const minus = document.querySelector('#subtract');
+const plus = document.querySelector('#add');
+const currentCount = document.querySelector('#currentCount');
+
+minus.addEventListener('click', subtract)
+
+function subtract() {
+console.log(currentCount.value - 1);
+currentCount.value -= 1;
+}
+
+function add() {
+currentCount.value = Number(currentCount.value) + 1;
+}
+
+plus.addEventListener('click', add)
+
+
+
+<!-- START -->
+
+<button id="btnBackground">Change background-color</button>
+<!-- JS -->
+const btnBackground = document.querySelector('#btnBackground')
+
+btnBackground.addEventListener('click', changBackground)
+
+function changBackground() {
+document.body.style.backgroundColor = 'green';
+}
+<!-- END -->
+
+
+<!-- START -->
+
+<button id="clickMe">Klicka på mig</button>
+
+<!-- JS -->
+const products = [
+{ id: 1, name: 'Chokladmunk', price: 25, category: 'Choklad' },
+{ id: 2, name: 'Vaniljmunk', price: 22, category: 'Vanilj' }
+];
+
+const productsHiden = [
+{ id: 1, name: 'Choklad', price: 25, category: 'Choklad-hiden' },
+{ id: 2, name: 'Vanilj', price: 22, category: 'Vanilj-hiden' }
+];
+
+const productsHidenObject = {
+name: 'silk',
+price: 250000,
+category: 'hiden',
+}
+
+const hidenProd = document.querySelector('.products-hide')
+
+hidenProd.innerHTML =
+`<p>${productsHidenObject.name}</p>
+<p>${productsHidenObject.price}</p>`
+
+
+function showHiden() {
+document.querySelector('.products-hide').style.display = 'block'
+}
+
+const btn1 = document.querySelector('#clickMe')
+
+btn1.addEventListener('click', showHiden)
+
+<!-- END -->
+
+<!-- START -->
+
+<div id="munkar"></div>
+<!-- JS -->
+const munkarDb = ['honey', 'vanilla', 'blueberry', 'cinnamon', 'stawberry', 'mango', 'banana'];
+
+munkarDb.splice(4, 2)
+munkarDb.sort()
+const hasHoney = munkarDb.indexOf('honey')
+const munkar = document.querySelector('#munkar')
+
+munkar.innerHTML = munkarDb.join(' ')
+
+<!-- END -->
