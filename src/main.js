@@ -38,26 +38,26 @@
 
 const products = [
   // MUNKAR – CLASSIC
-  { name: 'Honey Munk', price: 25, rating: 4.2, category: 'munk-classic', images: ['1.jpg', '2.jpg'] },
-  { name: 'Vanilla Munk', price: 22, rating: 3.8, category: 'munk-classic', images: ['1.jpg', '2.jpg'] },
-  { name: 'Chocolate Munk', price: 28, rating: 4.7, category: 'munk-classic', images: ['1.jpg', '2.jpg'] },
+  { name: 'Honey Munk', price: 25, rating: 4.2, category: 'munk-classic', images: ['munk1.png', 'munk2.png'] },
+  { name: 'Vanilla Munk', price: 22, rating: 3.8, category: 'munk-classic', images: ['munk3.png', 'munk4.png'] },
+  { name: 'Chocolate Munk', price: 28, rating: 4.7, category: 'munk-classic', images: [] },
 
   // MUNKAR – VEGAN
-  { name: 'Vegan Berry Munk', price: 30, rating: 4.3, category: 'munk-vegan', images: ['1.jpg', '2.jpg'] },
-  { name: 'Vegan Lemon Munk', price: 29, rating: 4.1, category: 'munk-vegan', images: ['1.jpg', '2.jpg'] },
-  { name: 'Vegan Cocoa Munk', price: 31, rating: 4.5, category: 'munk-vegan', images: ['1.jpg', '2.jpg'] },
+  { name: 'Vegan Berry Munk', price: 30, rating: 4.3, category: 'munk-vegan', images: [] },
+  { name: 'Vegan Lemon Munk', price: 29, rating: 4.1, category: 'munk-vegan', images: [] },
+  { name: 'Vegan Cocoa Munk', price: 31, rating: 4.5, category: 'munk-vegan', images: [] },
 
   // MUNKAR – PROTEIN
-  { name: 'Protein Peanut Munk', price: 35, rating: 4.8, category: 'munk-protein', images: ['1.jpg', '2.jpg'] },
-  { name: 'Protein Banana Munk', price: 34, rating: 4.4, category: 'munk-protein', images: ['1.jpg', '2.jpg'] },
-  { name: 'Protein Almond Munk', price: 36, rating: 4.9, category: 'munk-protein', images: ['1.jpg', '2.jpg'] },
-  { name: 'Protein Cocoa Munk', price: 37, rating: 4.6, category: 'munk-protein', images: ['1.jpg', '2.jpg'] },
+  { name: 'Protein Peanut Munk', price: 35, rating: 4.8, category: 'munk-protein', images: [] },
+  { name: 'Protein Banana Munk', price: 34, rating: 4.4, category: 'munk-protein', images: [] },
+  { name: 'Protein Almond Munk', price: 36, rating: 4.9, category: 'munk-protein', images: [] },
+  { name: 'Protein Cocoa Munk', price: 37, rating: 4.6, category: 'munk-protein', images: [] },
 
   // DRINKS
-  { name: 'Americano', price: 30, rating: 4.0, category: 'drink', images: ['1.jpg', '2.jpg'] },
-  { name: 'Latte', price: 32, rating: 4.4, category: 'drink', images: ['1.jpg', '2.jpg'] },
-  { name: 'Orange Juice', price: 25, rating: 4.1, category: 'drink', images: ['1.jpg', '2.jpg'] },
-  { name: 'Mineral Water', price: 20, rating: 3.9, category: 'drink', images: ['1.jpg', '2.jpg'] },
+  { name: 'Americano', price: 30, rating: 4.0, category: 'drink', images: [] },
+  { name: 'Latte', price: 32, rating: 4.4, category: 'drink', images: [] },
+  { name: 'Orange Juice', price: 25, rating: 4.1, category: 'drink', images: [] },
+  { name: 'Mineral Water', price: 20, rating: 3.9, category: 'drink', images: [] },
 ];
 
 
@@ -65,6 +65,8 @@ const products = [
 
 const list = document.querySelector('#productsList');
 const filter = document.querySelector('#categoryFilter');
+const sortByNameBtn = document.querySelector('#sortByNameBtn')
+const sortByPriceBtn = document.querySelector('#sortByPriceBtn')
 
 filter.addEventListener('change', () => {
   renderProducts(filter.value);
@@ -74,6 +76,7 @@ list.addEventListener('click', (e) => {
   if (!e.target.classList.contains('product-img')) return;
 
   const img = e.target;
+
   const images = JSON.parse(img.dataset.images);
   let index = Number(img.dataset.index);
 
@@ -82,6 +85,14 @@ list.addEventListener('click', (e) => {
   img.src = `./src/img/${images[index]}`;
   img.dataset.index = index;
 });
+
+sortByNameBtn.addEventListener('click', sortByName)
+
+
+function sortByName() {
+  products.sort((a, b) => a.name.localeCompare(b.name));
+  renderProducts(filter.value);
+}
 
 
 function renderProducts(category = '', min = 0, max = Infinity) {
@@ -96,8 +107,8 @@ function renderProducts(category = '', min = 0, max = Infinity) {
       li.innerHTML = `
         <h4>${product.name}</h4>    
          <img 
-          src="./src/img/munk1.png"
-          data-images='["munk1.png","munk2.png"]'
+          src="./src/img/${product.images[0]}"
+          data-images='${JSON.stringify(product.images)}'
           data-index="0"
           class="product-img"
           alt="${product.name}"
@@ -112,7 +123,7 @@ function renderProducts(category = '', min = 0, max = Infinity) {
 
 
 
-// renderProducts();
+renderProducts();
 
 
 

@@ -142,6 +142,7 @@ HEADER ENDS
 
     #productsList li {
       list-style: none;
+      border: 1px solid #ddd;
 
       h4 {
         font-weight: 100;
@@ -207,6 +208,13 @@ HEADER ENDS
           <option value="munk-protein">Protein</option>
           <option value="drink">Drinks</option>
         </select>
+      </label>
+
+      <label>
+        Sortera:
+        <button id="sortByNameBtn">Namn (A-Z)</button>
+        <button id="sortByPriceBtn">Dyrast överst</button>
+
       </label>
 
       <ul id="productsList"></ul>
