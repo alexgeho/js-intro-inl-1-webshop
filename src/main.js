@@ -70,17 +70,51 @@ filter.addEventListener('change', () => {
   renderProducts(filter.value);
 });
 
-function renderProducts(category) {
+list.addEventListener('click', (e) => {
+  if (!e.target.classList.contains('product-img')) return;
+
+  const img = e.target;
+  const images = JSON.parse(img.dataset.images);
+  let index = Number(img.dataset.index);
+
+  index = (index + 1) % images.length;
+
+  img.src = `./src/img/${images[index]}`;
+  img.dataset.index = index;
+});
+
+
+function renderProducts(category = '', min = 0, max = Infinity) {
   list.innerHTML = '';
 
-  products
-    .filter(p => !category || p.category === category)
-    .forEach(p => {
+  const result = products
+    .filter(product =>
+      (!category || product.category === category)
+    )
+    .forEach(product => {
       const li = document.createElement('li');
-      li.textContent = `${p.name} – ${p.price} kr`;
+      li.innerHTML = `
+        <h4>${product.name}</h4>    
+         <img 
+          src="./src/img/munk1.png"
+          data-images='["munk1.png","munk2.png"]'
+          data-index="0"
+          class="product-img"
+          alt="${product.name}"
+        >    
+        <p>${product.price} kr</p>
+        <p>Rating: ${product.rating}</p>
+        <p>Categori: ${product.category}</p>
+      `;
       list.appendChild(li);
     });
 }
+
+
+
+// renderProducts();
+
+
 
 
 /* END - catalog */

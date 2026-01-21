@@ -113,6 +113,16 @@ HEADER STARTS
     /* 
 HEADER ENDS
 */
+
+    /* START MAIN */
+
+
+    .product-img {
+      width: 140px;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
     .products-hide {
       display: none;
     }
@@ -125,16 +135,21 @@ HEADER ENDS
       display: block;
     }
 
-    main.categories-open {
-      background-color: #c7ffae;
-    }
-
     aside {
       display: flex;
       flex-direction: column;
-      width: 30%;
     }
 
+    #productsList li {
+      list-style: none;
+
+      h4 {
+        font-weight: 100;
+      }
+    }
+
+
+    /* START - Input */
     button,
     input {
       padding: 5px;
@@ -147,47 +162,10 @@ HEADER ENDS
       border-radius: 4px;
     }
 
-    .products-hide p {
-      margin: 8px 0;
-    }
+    /* END - Input */
+
 
     /* Categories START */
-
-    #munkarTest4 {
-      display: none;
-    }
-
-    #munkarTest4.open {
-      display: block;
-    }
-
-
-    #munkarTest4 li {
-      display: flex;
-      flex-direction: row;
-      list-style: none;
-      justify-content: space-between;
-      align-items: center;
-      width: 40%;
-      padding-left: 10px;
-    }
-
-    #munkarTest4 li:nth-child(even) {
-      background: #eee;
-    }
-
-    .material-symbols-outlined {
-      border: none;
-      background: transparent;
-    }
-
-    #coffee {
-      display: none;
-    }
-
-    #coffee.open {
-      display: block;
-    }
   </style>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
@@ -232,23 +210,21 @@ HEADER ENDS
       </label>
 
       <ul id="productsList"></ul>
+
     </aside>
 
-
     <section>
+      <img src="" alt="">
 
-      <div id="productsTest4">
+      <div id="msg"></div>
 
-        <div id="msg"></div>
-
-        <label>
-          Lägg till krydda:
-          <input type="text" id="newMunkField">
-        </label>
-        <button id="addMunkBtn">Lägg till</button>
+      <label>
+        Lägg till krydda:
+        <input type="text" id="newMunkField">
+      </label>
+      <button id="addMunkBtn">Lägg till</button>
 
 
-      </div>
 
     </section>
 
