@@ -96,13 +96,9 @@ function printProducts() {
   }
   productsListing.innerHTML = html;
 
-  const buyButtons = document.querySelectorAll('#productsList button.buy')
 
-  buyButtons.forEach((btn) => {
-    btn.addEventListener('click', addProductToCard);
-  });
 
-    /* INCREASE BTN */
+  /* INCREASE BTN */
 
   const increaseBtns = document.querySelectorAll('#productsList button.increase')
 
@@ -110,12 +106,7 @@ function printProducts() {
     btn.addEventListener('click', increaseProductCount);
   });
 
-  function increaseProductCount(e) {
-    const clickedBtnId = e.target.dataset.id;
-    const input = document.querySelector(`#amount-${clickedBtnId}`)
-    input.value = Number(input.value) + 1;
 
-  }
 
 
   /* DECREASE BTN */
@@ -126,13 +117,35 @@ function printProducts() {
     btn.addEventListener('click', decreaseProductCount);
   });
 
-  function decreaseProductCount(e) {
-    const clickedBtnId = e.target.dataset.id;
-    const input = document.querySelector(`#amount-${clickedBtnId}`)
-    input.value = Number(input.value) - 1;
 
-  }
 
+  /* BUY BTN */
+
+  const buyButtons = document.querySelectorAll('#productsList button.buy')
+
+  buyButtons.forEach((btn) => {
+    btn.addEventListener('click', addProductToCard);
+  });
+
+
+}
+
+
+
+/* INCREASE PRODUCT COUNT */
+
+function increaseProductCount(e) {
+  const clickedBtnId = e.target.dataset.id;
+  const input = document.querySelector(`#amount-${clickedBtnId}`)
+  input.value = Number(input.value) + 1;
+}
+
+/* DECREASE PRODUCT COUNT */
+
+function decreaseProductCount(e) {
+  const clickedBtnId = e.target.dataset.id;
+  const input = document.querySelector(`#amount-${clickedBtnId}`)
+  input.value = Number(input.value) - 1;
 }
 
 
@@ -142,16 +155,20 @@ function addProductToCard(e) {
   const clickedBtnId = Number(e.target.dataset.id);
   const product = products.find(product => product.id === clickedBtnId);
 
-  if (product === undefined) {
-    return;
-  }
+  if (product === undefined) return;
+
+  const input = document.querySelector(`#amount-${clickedBtnId}`)
+  const amount = Number(input.value)
+
+  const finalAmount = amount > 0 ? amount : 1;
 
   const index = cart.findIndex(product => product.id === clickedBtnId);
+
   if (index === -1) {
-    product.amount = 1;
+    product.amount = finalAmount;
     cart.push(product)
   } else {
-    product.amount += 1;
+    cart[index].amount += finalAmount;
   }
 
   printCart();
