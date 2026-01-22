@@ -140,9 +140,18 @@ HEADER ENDS
       flex-direction: column;
     }
 
+#productsList {
+padding: 0;
+}
+ 
+
     #productsList li {
       list-style: none;
       border: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
 
       h4 {
         font-weight: 100;
@@ -168,6 +177,13 @@ HEADER ENDS
 
     /* Categories START */
 
+    .img-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
     .img-dots {
       display: flex;
       justify-content: center;
@@ -176,8 +192,8 @@ HEADER ENDS
     }
 
     .dot {
-      width: 6px;
-      height: 6px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: #ccc;
       cursor: pointer;
@@ -250,8 +266,6 @@ HEADER ENDS
         <input type="text" id="newMunkField">
       </label>
       <button id="addMunkBtn">Lägg till</button>
-
-
 
     </section>
 
