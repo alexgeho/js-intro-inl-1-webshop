@@ -82,7 +82,13 @@ function printProducts() {
           <p>Betyg: ${currentProduct.rating}/5</p>
         </div>
     <p>Categori: ${currentProduct.category}</p>
-    <button data-id="${currentProduct.name}">Köp</button>
+
+    <div class="buy-row">
+      <label for="qty-1">Antal:</label>
+      <input id="qty-1" type="number">
+      <button data-id="${currentProduct.id}">Köp</button>
+    </div>
+    
     </article> 
     `
   }
@@ -94,13 +100,33 @@ function printProducts() {
     btn.addEventListener('click', addProductToCard);
   });
 }
-function addProductToCard(e) {
-  const id = e.target.dataset.id;
-  const product = products.find(p => p.name === id);
-  cart.push(product);
-  console.log('product::::::::>>>', product);
 
-  console.log('Bitaw add ProductTo Card');
+function addProductToCard(e) {
+  const clickedBtnId = Number(e.target.dataset.id);
+  const product = products.find(product => product.id === clickedBtnId);
+
+  if (product === undefined) {
+    return;
+  }
+  cart.push(product)
+  printCart();
+
 }
+
+const cartSection = document.querySelector('#cart')
+
+function printCart() {
+cartSection.innerHTML = '';
+
+for (let i = 0; i < cart.length; i++) {
+  cartSection.innerHTML += `
+      ${cart[i].name} — ${cart[i].price} kr<br>
+    `;
+}
+
+}
+
+console.log('cart::::::', cart);
+
 
 printProducts();

@@ -2,26 +2,26 @@
 
 const products = [
   // MUNKAR – CLASSIC
-  { name: 'Honey Munk', price: 25, rating: 4.2, category: 'munk-classic', images: ['munk1.png', 'munk2.png'] },
-  { name: 'Vanilla Munk', price: 22, rating: 3.8, category: 'munk-classic', images: ['munk3.png', 'munk4.png'] },
-  { name: 'Chocolate Munk', price: 28, rating: 4.7, category: 'munk-classic', images: [] },
+  { id: 1, name: 'Honey Munk', price: 25, rating: 4.2, category: 'munk-classic', images: ['munk1.png', 'munk2.png'] },
+  { id: 2, name: 'Vanilla Munk', price: 22, rating: 3.8, category: 'munk-classic', images: ['munk3.png', 'munk4.png'] },
+  { id: 3, name: 'Chocolate Munk', price: 28, rating: 4.7, category: 'munk-classic', images: [] },
 
   // MUNKAR – VEGAN
-  { name: 'Vegan Berry Munk', price: 30, rating: 4.3, category: 'munk-vegan', images: [] },
-  { name: 'Vegan Lemon Munk', price: 29, rating: 4.1, category: 'munk-vegan', images: [] },
-  { name: 'Vegan Cocoa Munk', price: 31, rating: 4.5, category: 'munk-vegan', images: [] },
+  { id: 4, name: 'Vegan Berry Munk', price: 30, rating: 4.3, category: 'munk-vegan', images: [] },
+  { id: 5, name: 'Vegan Lemon Munk', price: 29, rating: 4.1, category: 'munk-vegan', images: [] },
+  { id: 6, name: 'Vegan Cocoa Munk', price: 31, rating: 4.5, category: 'munk-vegan', images: [] },
 
   // MUNKAR – PROTEIN
-  { name: 'Protein Peanut Munk', price: 35, rating: 4.8, category: 'munk-protein', images: [] },
-  { name: 'Protein Banana Munk', price: 34, rating: 4.4, category: 'munk-protein', images: [] },
-  { name: 'Protein Almond Munk', price: 36, rating: 4.9, category: 'munk-protein', images: [] },
-  { name: 'Protein Cocoa Munk', price: 37, rating: 4.6, category: 'munk-protein', images: [] },
+  { id: 7, name: 'Protein Peanut Munk', price: 35, rating: 4.8, category: 'munk-protein', images: [] },
+  { id: 8, name: 'Protein Banana Munk', price: 34, rating: 4.4, category: 'munk-protein', images: [] },
+  { id: 9, name: 'Protein Almond Munk', price: 36, rating: 4.9, category: 'munk-protein', images: [] },
+  { id: 10, name: 'Protein Cocoa Munk', price: 37, rating: 4.6, category: 'munk-protein', images: [] },
 
   // DRINKS
-  { name: 'Americano', price: 30, rating: 4.0, category: 'drink', images: [] },
-  { name: 'Latte', price: 32, rating: 4.4, category: 'drink', images: [] },
-  { name: 'Orange Juice', price: 25, rating: 4.1, category: 'drink', images: [] },
-  { name: 'Mineral Water', price: 20, rating: 3.9, category: 'drink', images: [] },
+  { id: 11, name: 'Americano', price: 30, rating: 4.0, category: 'drink', images: [] },
+  { id: 12, name: 'Latte', price: 32, rating: 4.4, category: 'drink', images: [] },
+  { id: 13, name: 'Orange Juice', price: 25, rating: 4.1, category: 'drink', images: [] },
+  { id: 14, name: 'Mineral Water', price: 20, rating: 3.9, category: 'drink', images: [] },
 ];
 
 export default products;
