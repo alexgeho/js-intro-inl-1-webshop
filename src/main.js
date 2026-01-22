@@ -85,9 +85,10 @@ function printProducts() {
     <p>Categori: ${currentProduct.category}</p>
 
     <div class="buy-row">
-      <label for="qty-1">Antal:</label>
-      <input id="qty-1" type="number">
-      <button data-id="${currentProduct.id}">Köp</button>
+      <button class="decrease" data-id="${currentProduct.id}">-</button>
+      <input id="amount-${currentProduct.id}" type="number" disabled>
+      <button class="increase" data-id="${currentProduct.id}">+</button>
+      <button class="buy" data-id="${currentProduct.id}">Köp</button>
     </div>
     
     </article> 
@@ -95,12 +96,47 @@ function printProducts() {
   }
   productsListing.innerHTML = html;
 
-  const buyButtons = document.querySelectorAll('#productsList button')
+  const buyButtons = document.querySelectorAll('#productsList button.buy')
 
   buyButtons.forEach((btn) => {
     btn.addEventListener('click', addProductToCard);
   });
+
+    /* INCREASE BTN */
+
+  const increaseBtns = document.querySelectorAll('#productsList button.increase')
+
+  increaseBtns.forEach((btn) => {
+    btn.addEventListener('click', increaseProductCount);
+  });
+
+  function increaseProductCount(e) {
+    const clickedBtnId = e.target.dataset.id;
+    const input = document.querySelector(`#amount-${clickedBtnId}`)
+    input.value = Number(input.value) + 1;
+
+  }
+
+
+  /* DECREASE BTN */
+
+  const decreaseBtns = document.querySelectorAll('#productsList button.decrease')
+
+  decreaseBtns.forEach((btn) => {
+    btn.addEventListener('click', decreaseProductCount);
+  });
+
+  function decreaseProductCount(e) {
+    const clickedBtnId = e.target.dataset.id;
+    const input = document.querySelector(`#amount-${clickedBtnId}`)
+    input.value = Number(input.value) - 1;
+
+  }
+
 }
+
+
+/* ADD PRODUCT TO CARD */
 
 function addProductToCard(e) {
   const clickedBtnId = Number(e.target.dataset.id);
@@ -108,7 +144,7 @@ function addProductToCard(e) {
 
   if (product === undefined) {
     return;
-  } 
+  }
 
   const index = cart.findIndex(product => product.id === clickedBtnId);
   if (index === -1) {
@@ -118,10 +154,6 @@ function addProductToCard(e) {
     product.amount += 1;
   }
 
-  console.log('cart::::::', cart);
-  
-
-  
   printCart();
 
 }
@@ -129,15 +161,15 @@ function addProductToCard(e) {
 const cartSection = document.querySelector('#cart')
 
 function printCart() {
-cartSection.innerHTML = '';
+  cartSection.innerHTML = '';
 
-for (let i = 0; i < cart.length; i++) {
-  cartSection.innerHTML += `
+  for (let i = 0; i < cart.length; i++) {
+    cartSection.innerHTML += `
       <p>${cart[i].name} — ${cart[i].price} kr</p>
       <p>Antal: ${cart[i].amount} st</p>
       
     `;
-}
+  }
 
 }
 
