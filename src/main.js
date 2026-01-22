@@ -65,6 +65,7 @@ function printProducts() {
     html += `
     <article>
     <h3>${currentProduct.name}</h3>
+    <p>ID: ${currentProduct.id}</p>
        <div class="img-wrap">
         <img
           src="./src/img/${currentProduct.images[0]}"
@@ -107,8 +108,20 @@ function addProductToCard(e) {
 
   if (product === undefined) {
     return;
+  } 
+
+  const index = cart.findIndex(product => product.id === clickedBtnId);
+  if (index === -1) {
+    product.amount = 1;
+    cart.push(product)
+  } else {
+    product.amount += 1;
   }
-  cart.push(product)
+
+  console.log('cart::::::', cart);
+  
+
+  
   printCart();
 
 }
@@ -120,7 +133,9 @@ cartSection.innerHTML = '';
 
 for (let i = 0; i < cart.length; i++) {
   cartSection.innerHTML += `
-      ${cart[i].name} — ${cart[i].price} kr<br>
+      <p>${cart[i].name} — ${cart[i].price} kr</p>
+      <p>Antal: ${cart[i].amount} st</p>
+      
     `;
 }
 
