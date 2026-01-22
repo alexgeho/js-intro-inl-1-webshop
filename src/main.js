@@ -85,8 +85,8 @@ function printProducts() {
     <p>Categori: ${currentProduct.category}</p>
 
     <div class="buy-row">
-      <button class="decrease" data-id="${currentProduct.id}">-</button>
-      <input id="amount-${currentProduct.id}" type="number" disabled>
+      <button class="decrease" min="0" data-id="${currentProduct.id}">-</button>
+      <input id="amount-${currentProduct.id}" type="number" min="0" disabled>
       <button class="increase" data-id="${currentProduct.id}">+</button>
       <button class="buy" data-id="${currentProduct.id}">Köp</button>
     </div>
@@ -145,7 +145,15 @@ function increaseProductCount(e) {
 function decreaseProductCount(e) {
   const clickedBtnId = e.target.dataset.id;
   const input = document.querySelector(`#amount-${clickedBtnId}`)
-  input.value = Number(input.value) - 1;
+
+  let amount = Number(input.value) - 1;
+
+  if (amount < 0) {
+    amount = 0;
+  }
+    input.value = amount
+
+
 }
 
 
