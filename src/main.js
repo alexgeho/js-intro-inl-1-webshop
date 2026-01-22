@@ -30,7 +30,6 @@ function onFilterChange() {
   printProducts();
 }
 
-
 function sortByPrice() {
   filteredProducts.sort((a, b) => b.price - a.price);
   printProducts(filter.value);
@@ -54,9 +53,6 @@ function onDotClick(e) {
   });
 }
 
-
-
-
 function printProducts() {
 
   productsListing.innerHTML = '';
@@ -77,8 +73,8 @@ function printProducts() {
 
           <div class="img-dots">
            ${currentProduct.images.map((_, i) =>
-            `<span class="dot ${i === 0 ? 'active' : ''}"></span>`
-            ).join('')}
+      `<span class="dot ${i === 0 ? 'active' : ''}"></span>`
+    ).join('')}
           </div>
      </div>
       <div class="metadata">
@@ -86,64 +82,25 @@ function printProducts() {
           <p>Betyg: ${currentProduct.rating}/5</p>
         </div>
     <p>Categori: ${currentProduct.category}</p>
-    <button>Köp</button>
+    <button data-id="${currentProduct.name}">Köp</button>
     </article> 
     `
   }
-productsListing.innerHTML = html;
+  productsListing.innerHTML = html;
 
+  const buyButtons = document.querySelectorAll('#productsList button')
+
+  buyButtons.forEach((btn) => {
+    btn.addEventListener('click', addProductToCard);
+  });
 }
+function addProductToCard(e) {
+  const id = e.target.dataset.id;
+  const product = products.find(p => p.name === id);
+  cart.push(product);
+  console.log('product::::::::>>>', product);
+
+  console.log('Bitaw add ProductTo Card');
+}
+
 printProducts();
-
-
-
-
-
-
-/* function renderProducts(category = '', min = 0, max = Infinity) {
-  list.innerHTML = '';
-
-  const result = products
-
-    .filter(product =>
-      (!category || product.category === category)
-    )
-
-    .forEach(product => {
-      const li = document.createElement('li');
-
-      li.innerHTML = `
-        <h4>${product.name}</h4>
-    <div class="img-wrap">
-        <img
-          src="./src/img/${product.images[0]}"
-           data-images='${JSON.stringify(product.images)}'
-            data-index="0" class="product-img" >
-
-          <div class="img-dots">
-           ${product.images.map((_, i) =>
-            `<span class="dot ${i === 0 ? 'active' : ''}"></span>`
-            ).join('')}
-          </div>
-     </div>
-
-        <p>${product.price} kr</p>
-        <p>Rating: ${product.rating}</p>
-        <p>Categori: ${product.category}</p>
-        <button>Köp</button>
-
-      `;
-
-
-
-      list.appendChild(li);
-    });
-} */
-
-
-
-// renderProducts();
-
-/* 
-      const buyButtons = document.querySelectorAll('#productsList button')
-      console.log('buyButtons::::', buyButtons); */
