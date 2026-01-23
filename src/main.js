@@ -151,7 +151,7 @@ function decreaseProductCount(e) {
   if (amount < 0) {
     amount = 0;
   }
-    input.value = amount
+  input.value = amount
 
 
 }
@@ -179,7 +179,28 @@ function addProductToCard(e) {
     cart[index].amount += finalAmount;
   }
 
+  updateCartTotals();
+
   printCart();
+
+}
+
+const cartTotalElement = document.querySelector('#cartTotal')
+
+function updateCartTotals() {
+
+  let totalCost = 0;
+
+  for (let i = 0; i < cart.length; i++) {
+    totalCost += cart[i].price * cart[i].amount;
+
+    cartTotalElement.textContent = `Totalt: ${totalCost} kr`;
+
+
+    console.log('totalCost::::', totalCost);
+
+
+  }
 
 }
 
@@ -189,6 +210,7 @@ function printCart() {
   cartSection.innerHTML = '';
 
   for (let i = 0; i < cart.length; i++) {
+
     cartSection.innerHTML += `
       <p>${cart[i].name} — ${cart[i].price} kr</p>
       <p>Antal: ${cart[i].amount} st</p>
@@ -197,8 +219,6 @@ function printCart() {
   }
 
 }
-
-console.log('cart::::::', cart);
 
 
 printProducts();
