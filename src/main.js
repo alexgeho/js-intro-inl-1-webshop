@@ -212,26 +212,48 @@ function removeHighlightCartTotalChange() {
   cartTotalElement.classList.remove('highlight-price')
 }
 
-/* START - DELETE BUTTON */
+
 
 const cartSection = document.querySelector('#cart');
 
 cartSection.addEventListener('click', (e) => {
-  if (!e.target.classList.contains('delete-product')) return;
-  deleteProductFromCart(e);
+
+/* DECREASE */
+  if (e.target.classList.contains('decrease-cart-product')) {
+    const index = Number(e.target.dataset.id);
+
+    if (cart[index].amount > 1) {
+      cart[index].amount -= 1;
+    } else {
+      cart.splice(index, 1);
+    }
+
+    updateCartTotals();
+    printCart();
+    return;
+  }
+
+/* INCREASE */
+  if (e.target.classList.contains('increase-cart-product')) {
+    const index = Number(e.target.dataset.id);
+    cart[index].amount += 1;
+
+    updateCartTotals();
+    printCart();
+    return;
+  }
+
+/* DELETE */
+  if (e.target.classList.contains('delete-product')) {
+    const index = Number(e.target.dataset.id);
+    cart.splice(index, 1);
+
+    updateCartTotals();
+    printCart();
+    return;
+  }
 });
 
-function deleteProductFromCart(e) {
-  const rowId = Number(e.target.dataset.id);
-
-  cart.splice(rowId, 1);
-
-  updateCartTotals();
-  printCart();
-}
-
-
-/* END - DELETE BUTTON */
 
 
 /* START - PRINT CART */
@@ -242,10 +264,13 @@ function printCart() {
   for (let i = 0; i < cart.length; i++) {
 
     cartSection.innerHTML += `
-      <p>${cart[i].name} — ${cart[i].price} kr
+    <article>
+      ${cart[i].name}:
+      <button data-id="${i}" class="decrease-cart-product">-</button>
+      ${cart[i].amount} st
+      <button data-id="${i}" class="increase-cart-product">+</button>
       <button data-id="${i}" class="delete-product">Radera</button>
-      </p>
-      <p>Antal: ${cart[i].amount} st</p>      
+    </article> 
     `;
   }
 }
