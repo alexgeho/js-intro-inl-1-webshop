@@ -190,29 +190,26 @@ const cartTotalElement = document.querySelector('#cartTotal')
 function updateCartTotals() {
 
 
-      /* METHOD 2 for count cart's total */
+  /* METHOD 2 for count cart's total */
 
   const cartTotal = cart.reduce((partialSum, product) => {
     return partialSum + (product.price * product.amount);
   }, 0);
 
-    cartTotalElement.textContent = `Totalt: ${cartTotal} kr`;
+  cartTotalElement.textContent = `Totalt: ${cartTotal} kr`;
+
+  highlightCartTotalChange();
+}
 
 
-    /* METHOD 1 for count cart's total */
+function highlightCartTotalChange() {
+  cartTotalElement.classList.add('highlight-price');
 
-/* 
-  let totalCost = 0;
+  setTimeout(removeHighlightCartTotalChange, 1500);
+}
 
-  for (let i = 0; i < cart.length; i++) {
-    totalCost += cart[i].price * cart[i].amount;
-
-    cartTotalElement.textContent = `Totalt: ${totalCost} kr`;
-
-
-    console.log('totalCost::::', totalCost);
-  } */
-
+function removeHighlightCartTotalChange() {
+  cartTotalElement.classList.remove('highlight-price')
 }
 
 const cartSection = document.querySelector('#cart')
