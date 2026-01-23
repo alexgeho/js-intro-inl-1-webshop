@@ -304,10 +304,35 @@ function printCart() {
    `;  
 }
 
+const checkoutForm = document.querySelector('#checkoutForm')
+
+cartSection.addEventListener('click', (e) => {
+  if (e.target.classList.contains('orderCartBtn')) {
+    checkoutForm.style.display = 'block';
+  }
+});
 /* END - PRINT CART */
 
+/* TEST */
+
+const paymentRadios = document.querySelectorAll('input[name="payment"]');
+const invoiceFields = document.querySelector('#invoiceFields');
+const cardFields = document.querySelector('#cardFields');
+
+paymentRadios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    invoiceFields.hidden = radio.value !== 'invoice';
+    cardFields.hidden = radio.value !== 'card';
+  });
+});
+
+document.querySelector('#resetBtn').addEventListener('click', () => {
+  cart.length = 0;
+  updateCartTotals();
+  printCart();
+});
 
 
-
+/* TEST */
 
 printProducts();

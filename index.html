@@ -37,8 +37,9 @@ HEADER STARTS
       left: 0;
       background-color: #999;
       width: 100%;
-      min-height: 100%;
+      min-height: 40%;
       display: none;
+      z-index: 2000;
     }
 
     #navBugerJs.open {
@@ -263,11 +264,44 @@ HEADER ENDS
       }
     }
 
-    .orderCartBtn{
+    .orderCartBtn {
       max-width: 100%;
       padding: 10px;
       font-size: 1.2rem;
       margin-top: 15px;
+    }
+
+    #checkoutForm {
+      display: none;
+    }
+
+    #checkoutForm fieldset {
+      border: 1px solid #8c8383;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    /* На планшете и выше — 2 колонки */
+    @media (min-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-row label {
+      font-size: 0.85rem;
+      margin-bottom: 4px;
     }
 
     @media screen and (min-width: 768px) {
@@ -343,7 +377,6 @@ HEADER ENDS
           width: 100%;
         }
       }
-
     }
   </style>
   <link rel="stylesheet"
@@ -406,6 +439,111 @@ HEADER ENDS
         <h2>Varukorgen</h2>
         <p class="cartTotal" id="cartTotal">0 kr</p>
         <div id="cart">Varukorgen är tom.</div>
+
+        <form id="checkoutForm" novalidate>
+          <h3>Checkout</h3>
+
+          <!-- Kunduppgifter -->
+          <fieldset>
+            <legend>Kunduppgifter</legend>
+
+            <div class="form-row">
+              <label>Förnamn</label>
+              <input type="text" name="firstName" required>
+            </div>
+
+            <div class="form-row">
+              <label>Efternamn</label>
+              <input type="text" name="lastName" required>
+            </div>
+
+            <div class="form-row">
+              <label>Adress (gata)</label>
+              <input type="text" name="address" required>
+            </div>
+
+            <div class="form-row">
+              <label>Postnummer</label>
+              <input type="text" name="zip" required>
+            </div>
+
+            <div class="form-row">
+              <label>Postort</label>
+              <input type="text" name="city" required>
+            </div>
+
+            <div class="form-row">
+              <label>Ev. portkod</label>
+              <input type="text" name="portCode">
+            </div>
+
+            <div class="form-row">
+              <label>Telefon (mobil)</label>
+              <input type="tel" name="phone" required>
+            </div>
+
+            <div class="form-row">
+              <label>E-postadress</label>
+              <input type="email" name="email" required>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Betalsätt</legend>
+
+            <label class="radio-row">
+              <input type="radio" name="payment" value="card" required>
+              <span>Kort</span>
+            </label>
+
+            <label class="radio-row">
+              <input type="radio" name="payment" value="invoice">
+              <span>Faktura</span>
+            </label>
+
+            <!-- Faktura -->
+            <div id="invoiceFields" hidden>
+              <label>Personnummer</label>
+              <input type="text" name="personnummer">
+            </div>
+
+            <!-- Kort -->
+            <div id="cardFields" hidden>
+              <label>Kortnummer</label>
+              <input type="text">
+              <label>Datum / År</label>
+              <input type="text">
+              <label>CVC</label>
+              <input type="text">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Övrigt</legend>
+
+            <label>
+              <input type="checkbox" required>
+              Jag godkänner behandling av personuppgifter
+            </label>
+
+            <label>
+              <input type="checkbox">
+              Jag vill beställa nyhetsbrev
+            </label>
+
+            <div class="form-row">
+              <label>Rabattkod</label>
+              <input type="text" name="discount">
+            </div>
+          </fieldset>
+
+
+          <div class="form-actions">
+            <button type="submit" disabled id="submitBtn">Beställ</button>
+            <button type="reset" id="resetBtn">Rensa beställning</button>
+          </div>
+
+
       </section>
 
       <section id="productsList"></section>
