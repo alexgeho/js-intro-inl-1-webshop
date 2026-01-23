@@ -1,5 +1,21 @@
 import products from './products.mjs';
 
+/* START - BURGER MENU */
+
+const openCloseNavMenu = document.querySelector('#openCloseNavMenu')
+const navBugerJs = document.querySelector('#navBugerJs')
+const menuLinks = document.querySelectorAll('#menuLinks a').forEach(a => a.textContent = a.textContent.toUpperCase())
+
+openCloseNavMenu.addEventListener('click', toggleMenuOpenState)
+navBugerJs.addEventListener('click', toggleMenuOpenState)
+
+function toggleMenuOpenState() {
+  openCloseNavMenu.classList.toggle('open')
+  navBugerJs.classList.toggle('open')
+}
+
+/* END - BURGER MENU */
+
 const cart = [];
 
 
@@ -9,6 +25,7 @@ const productsListing = document.querySelector('#productsList');
 const filter = document.querySelector('#categoryFilter');
 const sortByNameBtn = document.querySelector('#sortByNameBtn')
 const sortByPriceBtn = document.querySelector('#sortByPriceBtn')
+const sortByRatingBtn = document.querySelector('#sortByRatingBtn')
 
 let filteredProducts = products;
 
@@ -17,6 +34,12 @@ productsListing.addEventListener('click', onDotClick);
 
 sortByNameBtn.addEventListener('click', sortByName)
 sortByPriceBtn.addEventListener('click', sortByPrice)
+sortByRatingBtn.addEventListener('click', sortByRating)
+
+function sortByRating() {
+  filteredProducts.sort((a, b) => b.rating - a.rating);
+  printProducts(filter.value);
+}
 
 function sortByName() {
   filteredProducts.sort((a, b) => a.name.localeCompare(b.name));

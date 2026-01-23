@@ -114,11 +114,28 @@ HEADER STARTS
 HEADER ENDS
 */
 
+
+    .hidden {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      background: #deffdd;
+      border-top: 2px solid #333;
+      padding: 10px;
+
+      z-index: 1000;
+
+    }
+
+
+
     /* START MAIN */
 
 
     .product-img {
-      width: 140px;
+      width: 240px;
       cursor: pointer;
       transition: opacity 0.2s ease;
     }
@@ -331,7 +348,7 @@ HEADER ENDS
 
   <header>
 
-    <h1>Jästson's webbshop av godaste munkar i Snaskköping</h1>
+    <h1>Jörgens butik för armeringselement i Sverige</h1>
     <div>
       <button id="openCloseNavMenu" class="burger">
         <span></span><span></span><span></span>
@@ -356,10 +373,10 @@ HEADER ENDS
         Category:
         <select id="categoryFilter">
           <option value="">All</option>
-          <option value="munk-classic">Classic</option>
-          <option value="munk-vegan">Vegan</option>
-          <option value="munk-protein">Protein</option>
-          <option value="drink">Drinks</option>
+          <option value="bockad-armering">Bockad Armering</option>
+          <option value="for-pelare">För pelare</option>
+          <option value="for-fundament">För fundament</option>
+          <option value="for-vaggar">För väggar</option>
         </select>
       </label>
 
@@ -367,6 +384,7 @@ HEADER ENDS
         Sortera:
         <button id="sortByNameBtn">Namn (A-Z)</button>
         <button id="sortByPriceBtn">Dyrast överst</button>
+        <button id="sortByRatingBtn">Sortera efter rating</button>
 
       </label>
 

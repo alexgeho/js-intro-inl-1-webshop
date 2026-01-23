@@ -295,21 +295,7 @@ munkar.innerHTML = munkarDb.join(' ')
 // }
 
 
-/* START - BURGER MENU */
 
-const openCloseNavMenu = document.querySelector('#openCloseNavMenu')
-const navBugerJs = document.querySelector('#navBugerJs')
-const menuLinks = document.querySelectorAll('#menuLinks a').forEach(a => a.textContent = a.textContent.toUpperCase())
-
-openCloseNavMenu.addEventListener('click', toggleMenuOpenState)
-navBugerJs.addEventListener('click', toggleMenuOpenState)
-
-function toggleMenuOpenState() {
-  openCloseNavMenu.classList.toggle('open')
-  navBugerJs.classList.toggle('open')
-}
-
-/* END - BURGER MENU */
 
 
 // /* for buttons */
