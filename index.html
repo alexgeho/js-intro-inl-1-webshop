@@ -224,6 +224,36 @@ HEADER ENDS
       color: olivedrab;
     }
 
+    @media screen and (min-width: 768px) {
+
+      #productsList {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-bottom: 24px;
+
+        h4 {
+          font-weight: 100;
+        }
+      }
+    }
+
+
+    @media screen and (min-width: 1200px) {
+
+      #productsList {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 24px;
+        margin-bottom: 24px;
+
+        h4 {
+          font-weight: 100;
+        }
+      }
+    }
   </style>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
@@ -273,6 +303,13 @@ HEADER ENDS
 
       </label>
 
+
+
+
+    </aside>
+
+    <section>
+
       <section class="hidden">
         <h2>Varukorgen</h2>
         <p class="cartTotal" id="cartTotal">0 kr</p>
@@ -281,10 +318,6 @@ HEADER ENDS
 
       <section id="productsList"></section>
 
-
-    </aside>
-
-    <section>
       <img src="" alt="">
 
       <div id="msg"></div>
@@ -293,6 +326,7 @@ HEADER ENDS
         Lägg till krydda:
         <input type="text" id="newMunkField">
       </label>
+
       <button id="addMunkBtn">Lägg till</button>
 
     </section>

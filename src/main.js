@@ -218,7 +218,7 @@ const cartSection = document.querySelector('#cart');
 
 cartSection.addEventListener('click', (e) => {
 
-/* DECREASE */
+  /* DECREASE */
   if (e.target.classList.contains('decrease-cart-product')) {
     const index = Number(e.target.dataset.id);
 
@@ -233,7 +233,7 @@ cartSection.addEventListener('click', (e) => {
     return;
   }
 
-/* INCREASE */
+  /* INCREASE */
   if (e.target.classList.contains('increase-cart-product')) {
     const index = Number(e.target.dataset.id);
     cart[index].amount += 1;
@@ -243,7 +243,7 @@ cartSection.addEventListener('click', (e) => {
     return;
   }
 
-/* DELETE */
+  /* DELETE */
   if (e.target.classList.contains('delete-product')) {
     const index = Number(e.target.dataset.id);
     cart.splice(index, 1);
@@ -257,7 +257,6 @@ cartSection.addEventListener('click', (e) => {
 
 
 /* START - PRINT CART */
-
 function printCart() {
   cartSection.innerHTML = '';
 
