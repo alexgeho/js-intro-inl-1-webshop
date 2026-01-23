@@ -226,7 +226,6 @@ function updateCartTotals() {
   highlightCartTotalChange();
 }
 
-
 function highlightCartTotalChange() {
   cartTotalElement.classList.add('highlight-price');
 
@@ -297,6 +296,12 @@ function printCart() {
     </article> 
     `;
   }
+
+   cartSection.innerHTML += `
+   <div class="cartOrder">
+      <button class="orderCartBtn">Beställ</button>
+   </div>
+   `;  
 }
 
 /* END - PRINT CART */
