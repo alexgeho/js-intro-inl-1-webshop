@@ -215,6 +215,9 @@ HEADER ENDS
       }
     }
 
+    .cartTotal {
+      transition: all 0.3s ease-in-out;
+    }
 
     .highlight-price {
       font-size: 1.5rem;
@@ -272,8 +275,8 @@ HEADER ENDS
 
       <section class="hidden">
         <h2>Varukorgen</h2>
-        <p id="cartTotal">0 kr</p>
-        <p id="cart">Varukorgen är tom.</p>
+        <p class="cartTotal" id="cartTotal">0 kr</p>
+        <div id="cart">Varukorgen är tom.</div>
       </section>
 
       <section id="productsList"></section>

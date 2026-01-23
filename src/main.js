@@ -205,14 +205,36 @@ function updateCartTotals() {
 function highlightCartTotalChange() {
   cartTotalElement.classList.add('highlight-price');
 
-  setTimeout(removeHighlightCartTotalChange, 1500);
+  setTimeout(removeHighlightCartTotalChange, 1000 * 1.5);
 }
 
 function removeHighlightCartTotalChange() {
   cartTotalElement.classList.remove('highlight-price')
 }
 
-const cartSection = document.querySelector('#cart')
+/* START - DELETE BUTTON */
+
+const cartSection = document.querySelector('#cart');
+
+cartSection.addEventListener('click', (e) => {
+  if (!e.target.classList.contains('delete-product')) return;
+  deleteProductFromCart(e);
+});
+
+function deleteProductFromCart(e) {
+  const rowId = Number(e.target.dataset.id);
+
+  cart.splice(rowId, 1);
+
+  updateCartTotals();
+  printCart();
+}
+
+
+/* END - DELETE BUTTON */
+
+
+/* START - PRINT CART */
 
 function printCart() {
   cartSection.innerHTML = '';
@@ -220,13 +242,18 @@ function printCart() {
   for (let i = 0; i < cart.length; i++) {
 
     cartSection.innerHTML += `
-      <p>${cart[i].name} — ${cart[i].price} kr</p>
-      <p>Antal: ${cart[i].amount} st</p>
-      
+      <p>${cart[i].name} — ${cart[i].price} kr
+      <button data-id="${i}" class="delete-product">Radera</button>
+      </p>
+      <p>Antal: ${cart[i].amount} st</p>      
     `;
   }
-
 }
+
+/* END - PRINT CART */
+
+
+
 
 
 printProducts();
