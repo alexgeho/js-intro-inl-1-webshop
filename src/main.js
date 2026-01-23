@@ -189,6 +189,19 @@ const cartTotalElement = document.querySelector('#cartTotal')
 
 function updateCartTotals() {
 
+
+      /* METHOD 2 for count cart's total */
+
+  const cartTotal = cart.reduce((partialSum, product) => {
+    return partialSum + (product.price * product.amount);
+  }, 0);
+
+    cartTotalElement.textContent = `Totalt: ${cartTotal} kr`;
+
+
+    /* METHOD 1 for count cart's total */
+
+/* 
   let totalCost = 0;
 
   for (let i = 0; i < cart.length; i++) {
@@ -198,9 +211,7 @@ function updateCartTotals() {
 
 
     console.log('totalCost::::', totalCost);
-
-
-  }
+  } */
 
 }
 
