@@ -85,9 +85,11 @@ function printProducts() {
     <p>Categori: ${currentProduct.category}</p>
 
     <div class="buy-row">
+    <div class="amount-row">
       <button class="decrease" min="0" data-id="${currentProduct.id}">-</button>
       <input id="amount-${currentProduct.id}" type="number" min="0" disabled>
       <button class="increase" data-id="${currentProduct.id}">+</button>
+    </div>
       <button class="buy" data-id="${currentProduct.id}">Köp</button>
     </div>
     

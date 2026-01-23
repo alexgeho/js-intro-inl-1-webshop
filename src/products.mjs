@@ -2,13 +2,13 @@
 
 const products = [
   // MUNKAR – CLASSIC
-  { id: 1, name: 'Honey Munk', price: 25, rating: 4.2, category: 'munk-classic', images: ['munk1.png', 'munk2.png'] },
-  { id: 2, name: 'Vanilla Munk', price: 22, rating: 3.8, category: 'munk-classic', images: ['munk3.png', 'munk4.png'] },
-  { id: 3, name: 'Chocolate Munk', price: 28, rating: 4.7, category: 'munk-classic', images: [] },
+  { id: 1, name: 'Honey Munk', price: 25, rating: 4.2, category: 'munk-classic', images: ['vara1.png', 'vara1-2.png'] },
+  { id: 2, name: 'Vanilla Munk', price: 22, rating: 3.8, category: 'munk-classic', images: ['vara2.png', 'vara2-2.png'] },
+  { id: 3, name: 'Chocolate Munk', price: 28, rating: 4.7, category: 'munk-classic', images: ['vara3.png', 'vara3-2.png'] },
 
   // MUNKAR – VEGAN
-  { id: 4, name: 'Vegan Berry Munk', price: 30, rating: 4.3, category: 'munk-vegan', images: [] },
-  { id: 5, name: 'Vegan Lemon Munk', price: 29, rating: 4.1, category: 'munk-vegan', images: [] },
+  { id: 4, name: 'Vegan Berry Munk', price: 30, rating: 4.3, category: 'munk-vegan', images: ['vara4.png', 'vara4-2.png'] },
+  { id: 5, name: 'Vegan Lemon Munk', price: 29, rating: 4.1, category: 'munk-vegan', images: ['vara5.png', 'vara5-2.png'] },
   { id: 6, name: 'Vegan Cocoa Munk', price: 31, rating: 4.5, category: 'munk-vegan', images: [] },
 
   // MUNKAR – PROTEIN

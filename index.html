@@ -224,7 +224,67 @@ HEADER ENDS
       color: olivedrab;
     }
 
+    .amount-row {
+      width: 100%;
+
+      input {
+        max-width: 100%;
+      }
+
+      button {
+        max-width: 100%;
+      }
+    }
+
+    .buy-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button.buy {
+        width: 100%;
+      }
+    }
+
     @media screen and (min-width: 768px) {
+
+      #productsList {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-bottom: 24px;
+
+        h4 {
+          font-weight: 100;
+        }
+      }
+
+      .amount-row {
+        width: 100%;
+
+        input {
+          max-width: 100%;
+        }
+
+        button {
+          max-width: 100%;
+        }
+      }
+
+      .buy-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button.buy {
+          width: 100%;
+        }
+      }
+    }
+
+
+    @media screen and (min-width: 1200px) {
 
       #productsList {
         list-style: none;
@@ -237,22 +297,29 @@ HEADER ENDS
           font-weight: 100;
         }
       }
-    }
 
+      .amount-row {
+        width: 100%;
 
-    @media screen and (min-width: 1200px) {
+        input {
+          max-width: 100%;
+        }
 
-      #productsList {
-        list-style: none;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 24px;
-        margin-bottom: 24px;
-
-        h4 {
-          font-weight: 100;
+        button {
+          max-width: 100%;
         }
       }
+
+      .buy-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button.buy {
+          width: 100%;
+        }
+      }
+
     }
   </style>
   <link rel="stylesheet"
