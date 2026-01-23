@@ -68,7 +68,7 @@ function printProducts() {
     <p>ID: ${currentProduct.id}</p>
        <div class="img-wrap">
         <img
-          src="./src/img/${currentProduct.images[0]}"
+          src="img/${currentProduct.images[0]}"
            data-images='${JSON.stringify(currentProduct.images)}'
             data-index="0" class="product-img" >
 
