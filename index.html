@@ -297,10 +297,11 @@ HEADER ENDS
       margin-top: 15px;
     }
 
+    /* 
     #checkoutForm {
       display: none;
     }
-
+ */
     #checkoutForm fieldset {
       display: flex;
       flex-direction: column;
@@ -310,7 +311,8 @@ HEADER ENDS
 
       legend,
       label {
-        font-size: 1rem;      }
+        font-size: 1rem;
+      }
     }
 
     .datum-cvc {
@@ -526,7 +528,7 @@ HEADER ENDS
 
             <!-- Kort -->
             <label class="radio-row">
-              <input type="radio" name="payment" value="card" required>
+              <input type="radio" name="payment" value="card">
               <span>Kort</span>
             </label>
 
@@ -578,7 +580,7 @@ HEADER ENDS
             </label>
 
             <label>
-              <input type="checkbox">
+              <input type="checkbox" checked>
               Jag vill beställa nyhetsbrev
             </label>
 
@@ -595,7 +597,8 @@ HEADER ENDS
             <button type="button" id="closeCheckoutBtn">X</button>
           </div>
 
-
+        </form>
+        
       </section>
 
       <section id="productsList"></section>

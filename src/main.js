@@ -58,6 +58,7 @@ function sortByPrice() {
   printProducts(filter.value);
 }
 
+/* TOGGLE IMG */
 function onDotClick(e) {
   if (!e.target.classList.contains('dot')) return;
 
@@ -76,6 +77,7 @@ function onDotClick(e) {
   });
 }
 
+/* PRINT PRODUCTS */
 function printProducts() {
 
   productsListing.innerHTML = '';
@@ -310,7 +312,6 @@ function printCart() {
 
 /* BESTÄLL BTN */
 const checkoutForm = document.querySelector('#checkoutForm');
-const personnummerInput = document.querySelector('#personnummer');
 
 cartSection.addEventListener('click', (e) => {
 
@@ -321,20 +322,11 @@ cartSection.addEventListener('click', (e) => {
     return;
   }
 
-  // CLOSE (X) — НО с проверкой
+  // CLOSE (X) 
+
   if (e.target.closest('.closeCheckoutBtn')) {
 
-    const selectedPayment =
-      checkoutForm.querySelector('input[name="payment"]:checked');
 
-    if (
-      selectedPayment?.value === 'invoice' &&
-      !isValidSwedishPersonnummer(personnummerInput.value)
-    ) {
-      alert('Ange ett giltigt svenskt personnummer');
-      personnummerInput.focus();
-      return;
-    }
     checkoutForm.style.display = 'none';
     return;
   }
@@ -344,20 +336,9 @@ cartSection.addEventListener('click', (e) => {
 document.querySelector('#closeCheckoutBtn')
   .addEventListener('click', () => {
 
-    const selectedPayment =
-      checkoutForm.querySelector('input[name="payment"]:checked');
-
-    if (
-      selectedPayment?.value === 'invoice' &&
-      !isValidSwedishPersonnummer(personnummerInput.value)
-    ) {
-      alert('Ange ett giltigt svenskt personnummer');
-      personnummerInput.focus();
-      return;
-    }
-
     checkoutForm.style.display = 'none';;
   });
+
 
 
 /* Betalsätt START */
@@ -366,41 +347,28 @@ const paymentRadios = document.querySelectorAll('input[name="payment"]');
 const invoiceFields = document.querySelector('#invoiceFields');
 const cardFields = document.querySelector('#cardFields');
 
+const cardInputs = cardFields.querySelectorAll('input');
+const personnummerInput = document.querySelector('#personnummer');
+
 paymentRadios.forEach(radio => {
   radio.addEventListener('change', () => {
-    invoiceFields.hidden = radio.value !== 'invoice';
-    cardFields.hidden = radio.value !== 'card';
+    const isCard = radio.value === 'card';
+    const isInvoice = radio.value === 'invoice';
+
+    // show / hide
+    cardFields.hidden = !isCard;
+    invoiceFields.hidden = !isInvoice;
+
+    // required handling
+    cardInputs.forEach(input => {
+      input.required = isCard;
+    });
+
+    personnummerInput.required = isInvoice;
   });
 });
 
-document.querySelector('#resetBtn').addEventListener('click', () => {
-  cart.length = 0;
-  updateCartTotals();
-  printCart();
-});
-
-
 /* Betalsätt END */
-
-function isValidSwedishPersonnummer(value) {
-  const cleaned = value.replace('-', '');
-
-  if (!/^\d{12}$/.test(cleaned)) return false;
-
-  const digits = cleaned.slice(2).split('').map(Number); // YYMMDDXXXX
-  let sum = 0;
-
-  for (let i = 0; i < digits.length; i++) {
-    let num = digits[i];
-    if (i % 2 === 0) {
-      num *= 2;
-      if (num > 9) num -= 9;
-    }
-    sum += num;
-  }
-
-  return sum % 10 === 0;
-}
 
 
 printProducts();
