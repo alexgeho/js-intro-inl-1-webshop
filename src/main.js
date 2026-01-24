@@ -424,4 +424,64 @@ paymentRadios.forEach(radio => {
 /* Betalsätt END */
 
 
+
+/* FORM VALIDERING 1 */
+
+checkoutForm.addEventListener('input', (e) => {
+  const input = e.target;
+  if (!(input instanceof HTMLInputElement)) return;
+  if (!input.id) return;
+
+  input.dataset.touched = 'true';
+
+  if (input.validity.valueMissing) {
+    showError(input, 'Detta fält är obligatoriskt');
+  }
+  else if (input.validity.patternMismatch) {
+    showError(input, getPatternErrorMessage(input));
+  }
+  else if (input.validity.typeMismatch) {
+    showError(input, 'Ogiltigt format');
+  }
+  else {
+    clearError(input);
+  }
+});
+
+
+
+/* FORM VALIDERING */
+
+function showError(input, message) {
+  const errorEl = document.getElementById(input.id + 'Error');
+  errorEl.textContent = message;
+}
+
+function clearError(input) {
+  const errorEl = document.getElementById(input.id + 'Error');
+  errorEl.textContent = '';
+}
+
+function getPatternErrorMessage(input) {
+  switch (input.id) {
+    case 'firstName':
+    case 'lastName':
+    case 'city':
+      return 'Endast bokstäver tillåtna';
+
+    case 'phone':
+      return 'Ange ett giltigt telefonnummer';
+
+    case 'email':
+      return 'Ange en giltig e-postadress';
+
+    case 'zip':
+      return 'Ange ett giltigt postnummer';
+
+    default:
+      return 'Ogiltigt format';
+  }
+}
+
+
 printProducts();

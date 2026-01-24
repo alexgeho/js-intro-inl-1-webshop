@@ -149,10 +149,6 @@ HEADER ENDS
       flex-direction: column;
     }
 
-    .form-row label {
-      font-size: 0.85rem;
-    }
-
     .form-dubble {
       display: flex;
       gap: 10px;
@@ -312,6 +308,7 @@ HEADER ENDS
       legend,
       label {
         font-size: 1rem;
+        margin-top: 10px;
       }
     }
 
@@ -320,22 +317,17 @@ HEADER ENDS
       gap: 10px;
     }
 
-    /* required */
-    input:required {
-      border-left: 3px solid #aaa;
+    input[data-touched="true"]:invalid {
+      border: 2px solid #c62828;
     }
 
-    /* invalid */
-    input:required:invalid {
-      border-left: 3px solid #e53935;
-      background: #ffecec;
+    input[data-touched="true"]:valid {
+      border: 2px solid #2e7d32;
     }
 
-    /* valid */
-    input:required:valid {
-      border-left: 3px solid #2e7d32;
+    .error-message {
+      font-size: 0.9rem;
     }
-
 
     @media screen and (min-width: 768px) {
 
@@ -488,12 +480,18 @@ HEADER ENDS
 
               <div class="form-row">
                 <label>Förnamn</label>
-                <input type="text" name="firstName" required>
+
+                <input id="firstName" type="text" name="firstName" required pattern="[A-Za-zÅÄÖåäö\- ]+"
+                  aria-describedby="firstNameError">
+                <small class="error-message" id="firstNameError" aria-live="polite"></small>
+
               </div>
 
               <div class="form-row">
                 <label>Efternamn</label>
-                <input type="text" name="lastName">
+                <input id="lastName" type="text" name="lastName" required pattern="[A-Za-zÅÄÖåäö\- ]+">
+                <small class="error-message" id="lastNameError"></small>
+
               </div>
             </div>
 
@@ -501,7 +499,8 @@ HEADER ENDS
 
               <div class="form-row">
                 <label>Adress (gata)</label>
-                <input type="text" name="address">
+                <input id="address" type="text" name="address" required pattern="[A-Za-zÅÄÖåäö0-9.\- ]{3,}">
+                <small class="error-message" id="addressError"></small>
               </div>
 
               <div class="form-row">
@@ -512,15 +511,16 @@ HEADER ENDS
             </div>
 
             <div class="form-dubble">
-
               <div class="form-row">
                 <label>Postnummer</label>
-                <input type="text" name="zip">
+                <input id="zip" type="text" name="zip" required pattern="\d{3}\s?\d{2}">
+                <small class="error-message" id="zipError"></small>
               </div>
 
               <div class="form-row">
                 <label>Postort</label>
-                <input type="text" name="city">
+                <input id="city" type="text" name="city" required pattern="[A-Za-zÅÄÖåäö\- ]+">
+                <small class="error-message" id="cityError"></small>
               </div>
             </div>
 
@@ -528,12 +528,15 @@ HEADER ENDS
             <div class="form-dubble">
               <div class="form-row">
                 <label>Telefon (mobil)</label>
-                <input type="tel" name="phone">
+                <input id="phone" type="tel" name="phone" required pattern="^\+46[0-9]{7,13}$">
+                <small class="error-message" id="phoneError"></small>
               </div>
 
               <div class="form-row">
                 <label>E-postadress</label>
-                <input type="email" name="email">
+                <input id="email" type="email" name="email" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+                <small class="error-message" id="emailError"></small>
+
               </div>
             </div>
 
