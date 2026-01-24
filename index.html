@@ -133,6 +133,14 @@ HEADER ENDS
       border: 1px solid #777777;
       padding: 10px;
       z-index: 100;
+
+      h2 {
+        font-weight: 100;
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      font-size: 1.3rem;
     }
 
     .form-grid {
@@ -147,7 +155,34 @@ HEADER ENDS
 
     .form-row label {
       font-size: 0.85rem;
-      margin-bottom: 4px;
+    }
+
+    .form-trible label {
+      display: block;
+      white-space: normal;
+      font-size: 0.85rem;
+    }
+
+
+    .form-dubble {
+      display: flex;
+    }
+
+    .form-trible {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 0;
+    }
+
+    .form-trible input {
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .form-trible>div {
+      min-width: 0;
     }
 
 
@@ -196,14 +231,12 @@ HEADER ENDS
 
 
     /* START - Input */
-    button,
-    input {
+    button {
       padding: 5px;
       margin: 5px;
     }
 
     input {
-      font-size: 16px;
       border: 1px solid #999;
       border-radius: 4px;
     }
@@ -252,6 +285,7 @@ HEADER ENDS
 
       p {
         margin: 5px;
+        font-size: 1.3rem;
       }
     }
 
@@ -295,12 +329,21 @@ HEADER ENDS
 
     #checkoutForm {
       display: none;
+
+      h3 {
+        font-weight: 100;
+        font-size: 1.2rem;
+      }
     }
 
     #checkoutForm fieldset {
       border: 1px solid #8c8383;
       padding: 10px;
       margin-bottom: 12px;
+
+      legend {
+        font-size: 1rem;
+      }
     }
 
     .form-grid {
@@ -334,9 +377,6 @@ HEADER ENDS
       .amount-row {
         width: 100%;
 
-        input {
-          max-width: 100%;
-        }
 
         button {
           max-width: 100%;
@@ -451,7 +491,9 @@ HEADER ENDS
       <section class="hidden">
         <h2>Varukorgen</h2>
         <p class="cartTotal" id="cartTotal">0 kr</p>
-        <div id="cart">Varukorgen är tom.</div>
+        <div id="cart">
+          <p>Varukorgen är tom.</p>
+        </div>
 
         <form id="checkoutForm" novalidate>
           <h3>Checkout</h3>
@@ -460,35 +502,44 @@ HEADER ENDS
           <fieldset>
             <legend>Kunduppgifter</legend>
 
-            <div class="form-row">
-              <label>Förnamn</label>
-              <input type="text" name="firstName" required>
-            </div>
+            <div class="form-dubble">
 
-            <div class="form-row">
-              <label>Efternamn</label>
-              <input type="text" name="lastName" required>
-            </div>
+              <div class="form-row">
+                <label>Förnamn</label>
+                <input type="text" name="firstName" required>
+              </div>
 
+              <div class="form-row">
+                <label>Efternamn</label>
+                <input type="text" name="lastName" required>
+              </div>
+
+            </div>
             <div class="form-row">
               <label>Adress (gata)</label>
               <input type="text" name="address" required>
             </div>
 
-            <div class="form-row">
-              <label>Postnummer</label>
-              <input type="text" name="zip" required>
+            <div class="form-trible">
+
+              <div>
+                <label>Postnummer</label>
+                <input type="text" name="zip" required>
+              </div>
+
+              <div>
+                <label>Postort</label>
+                <input type="text" name="city" required>
+              </div>
+
+              <div>
+                <label>Ev. portkod</label>
+                <input type="text" name="portCode">
+              </div>
+
             </div>
 
-            <div class="form-row">
-              <label>Postort</label>
-              <input type="text" name="city" required>
-            </div>
 
-            <div class="form-row">
-              <label>Ev. portkod</label>
-              <input type="text" name="portCode">
-            </div>
 
             <div class="form-row">
               <label>Telefon (mobil)</label>
