@@ -198,8 +198,10 @@ function addProductToCard(e) {
   const index = cart.findIndex(product => product.id === clickedBtnId);
 
   if (index === -1) {
-    product.amount = finalAmount;
-    cart.push(product)
+    cart.push({
+      ...product,
+      amount: finalAmount
+    });
   } else {
     cart[index].amount += finalAmount;
   }
@@ -308,30 +310,57 @@ function printCart() {
 
 /* BESTÄLL BTN */
 const checkoutForm = document.querySelector('#checkoutForm');
+const personnummerInput = document.querySelector('#personnummer');
 
 cartSection.addEventListener('click', (e) => {
 
+  // OPEN / TOGGLE
   if (e.target.closest('.orderCartBtn')) {
     checkoutForm.style.display =
       checkoutForm.style.display === 'block' ? 'none' : 'block';
     return;
   }
 
+  // CLOSE (X) — НО с проверкой
   if (e.target.closest('.closeCheckoutBtn')) {
+
+    const selectedPayment =
+      checkoutForm.querySelector('input[name="payment"]:checked');
+
+    if (
+      selectedPayment?.value === 'invoice' &&
+      !isValidSwedishPersonnummer(personnummerInput.value)
+    ) {
+      alert('Ange ett giltigt svenskt personnummer');
+      personnummerInput.focus();
+      return;
+    }
     checkoutForm.style.display = 'none';
     return;
   }
+
 });
 
-/* X В ФОРМЕ (static) */
 document.querySelector('#closeCheckoutBtn')
   .addEventListener('click', () => {
-    checkoutForm.style.display = 'none';
+
+    const selectedPayment =
+      checkoutForm.querySelector('input[name="payment"]:checked');
+
+    if (
+      selectedPayment?.value === 'invoice' &&
+      !isValidSwedishPersonnummer(personnummerInput.value)
+    ) {
+      alert('Ange ett giltigt svenskt personnummer');
+      personnummerInput.focus();
+      return;
+    }
+
+    checkoutForm.style.display = 'none';;
   });
 
 
-
-/* TEST */
+/* Betalsätt START */
 
 const paymentRadios = document.querySelectorAll('input[name="payment"]');
 const invoiceFields = document.querySelector('#invoiceFields');
@@ -351,6 +380,27 @@ document.querySelector('#resetBtn').addEventListener('click', () => {
 });
 
 
-/* TEST */
+/* Betalsätt END */
+
+function isValidSwedishPersonnummer(value) {
+  const cleaned = value.replace('-', '');
+
+  if (!/^\d{12}$/.test(cleaned)) return false;
+
+  const digits = cleaned.slice(2).split('').map(Number); // YYMMDDXXXX
+  let sum = 0;
+
+  for (let i = 0; i < digits.length; i++) {
+    let num = digits[i];
+    if (i % 2 === 0) {
+      num *= 2;
+      if (num > 9) num -= 9;
+    }
+    sum += num;
+  }
+
+  return sum % 10 === 0;
+}
+
 
 printProducts();
