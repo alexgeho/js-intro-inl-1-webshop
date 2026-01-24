@@ -19,7 +19,6 @@
 
     main {
       display: block;
-
     }
 
 
@@ -143,13 +142,10 @@ HEADER ENDS
       font-size: 1.3rem;
     }
 
-    .form-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
 
     .form-row {
       display: flex;
+      width: 100%;
       flex-direction: column;
     }
 
@@ -162,28 +158,7 @@ HEADER ENDS
       gap: 10px;
     }
 
-    .form-trible {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 10px;
-
-    }
-
-    .form-trible input {
-      box-sizing: border-box;
-      width: 100%;
-      min-width: 0;
-      box-sizing: border-box;
-
-    }
-
-
-
-
-
-
-
+  
     /* START MAIN */
 
 
@@ -339,15 +314,6 @@ HEADER ENDS
         font-size: 1.2rem;
       }
     }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-
-
 
     @media screen and (min-width: 768px) {
 
@@ -506,30 +472,33 @@ HEADER ENDS
                 <label>Efternamn</label>
                 <input type="text" name="lastName" required>
               </div>
-
-            </div>
-            <div class="form-row">
-              <label>Adress (gata)</label>
-              <input type="text" name="address" required>
             </div>
 
-            <div class="form-trible">
+            <div class="form-dubble">
 
-              <div>
-                <label>Postnummer</label>
-                <input type="text" name="zip" required>
+              <div class="form-row">
+                <label>Adress (gata)</label>
+                <input type="text" name="address" required>
               </div>
 
-              <div>
-                <label>Postort</label>
-                <input type="text" name="city" required>
-              </div>
-
-              <div>
+              <div class="form-row">
                 <label>Ev. portkod</label>
                 <input type="text" name="portCode">
               </div>
 
+            </div>
+
+            <div class="form-dubble">
+
+              <div class="form-row">
+                <label>Postnummer</label>
+                <input type="text" name="zip" required>
+              </div>
+
+              <div class="form-row">
+                <label>Postort</label>
+                <input type="text" name="city" required>
+              </div>
             </div>
 
 
@@ -544,6 +513,7 @@ HEADER ENDS
                 <input type="email" name="email" required>
               </div>
             </div>
+
           </fieldset>
 
           <fieldset>
