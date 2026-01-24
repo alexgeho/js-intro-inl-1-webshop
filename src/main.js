@@ -297,30 +297,39 @@ function printCart() {
     `;
   }
 
-   cartSection.innerHTML += `
-   <div class="cartOrder">
-      <button class="orderCartBtn">Beställ</button>
-   </div>
-   `;  
+  cartSection.innerHTML += `
+  <div class="cartOrder">
+    <button class="orderCartBtn" type="button">Beställ</button>
+    <button class="closeCheckoutBtn" type="button">X</button>
+  </div>
+`;
+
 }
 
+/* BESTÄLL BTN */
 const checkoutForm = document.querySelector('#checkoutForm');
-const closeCheckoutBtn = document.querySelector('#closeCheckoutBtn');
 
 cartSection.addEventListener('click', (e) => {
-  if (e.target.classList.contains('orderCartBtn')) {
-    // toggle
+
+  if (e.target.closest('.orderCartBtn')) {
     checkoutForm.style.display =
       checkoutForm.style.display === 'block' ? 'none' : 'block';
+    return;
+  }
+
+  if (e.target.closest('.closeCheckoutBtn')) {
+    checkoutForm.style.display = 'none';
+    return;
   }
 });
 
-closeCheckoutBtn.addEventListener('click', () => {
-  checkoutForm.style.display = 'none';
-});
+/* X В ФОРМЕ (static) */
+document.querySelector('#closeCheckoutBtn')
+  .addEventListener('click', () => {
+    checkoutForm.style.display = 'none';
+  });
 
 
-/* END - PRINT CART */
 
 /* TEST */
 
