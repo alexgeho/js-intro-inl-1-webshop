@@ -4,7 +4,6 @@ import products from './products.mjs';
 
 const openCloseNavMenu = document.querySelector('#openCloseNavMenu')
 const navBugerJs = document.querySelector('#navBugerJs')
-const menuLinks = document.querySelectorAll('#menuLinks a').forEach(a => a.textContent = a.textContent.toUpperCase())
 
 openCloseNavMenu.addEventListener('click', toggleMenuOpenState)
 navBugerJs.addEventListener('click', toggleMenuOpenState)
@@ -16,10 +15,11 @@ function toggleMenuOpenState() {
 
 /* END - BURGER MENU */
 
+
 const cart = [];
 
 
-/* START - catalog filter */
+/* START - catalog filter SORT */
 
 const productsListing = document.querySelector('#productsList');
 const filter = document.querySelector('#categoryFilter');
@@ -40,19 +40,16 @@ function sortByRating() {
   filteredProducts.sort((a, b) => b.rating - a.rating);
   printProducts(filter.value);
 }
-
 function sortByName() {
   filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
   printProducts();
 }
-
 function onFilterChange() {
   filteredProducts = products.filter(p =>
     !filter.value || p.category === filter.value
   );
   printProducts();
 }
-
 function sortByPrice() {
   filteredProducts.sort((a, b) => b.price - a.price);
   printProducts(filter.value);
@@ -69,7 +66,7 @@ function onDotClick(e) {
   const img = dotsWrap.previousElementSibling;
   const images = JSON.parse(img.dataset.images);
 
-  img.src = `./src/img/${images[index]}`;
+  img.src = `img/${images[index]}`;
   img.dataset.index = index;
 
   dots.forEach((dot, i) => {
@@ -92,17 +89,21 @@ function printProducts() {
     <h3>${currentProduct.name}</h3>
     <p>ID: ${currentProduct.id}</p>
        <div class="img-wrap">
+
         <img
           src="img/${currentProduct.images[0]}"
            data-images='${JSON.stringify(currentProduct.images)}'
-            data-index="0" class="product-img" >
+            data-index="0" class="product-img" 
+          >
 
           <div class="img-dots">
-           ${currentProduct.images.map((_, i) =>
-      `<span class="dot ${i === 0 ? 'active' : ''}"></span>`
-    ).join('')}
+            ${currentProduct.images.map((_, i) =>
+            `<span class="dot ${i === 0 ? 'active' : ''}"></span>`
+            ).join('')}
           </div>
+
      </div>
+
       <div class="metadata">
           <p>Pris: ${currentProduct.price} kr</p>
           <p>Betyg: ${currentProduct.rating}/5</p>
