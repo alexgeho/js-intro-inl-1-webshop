@@ -157,21 +157,17 @@ HEADER ENDS
       font-size: 0.85rem;
     }
 
-    .form-trible label {
-      display: block;
-      white-space: normal;
-      font-size: 0.85rem;
-    }
-
-
     .form-dubble {
       display: flex;
+      gap: 10px;
     }
 
     .form-trible {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      margin: 0;
+      gap: 10px;
+      margin-top: 10px;
+
     }
 
     .form-trible input {
@@ -179,11 +175,10 @@ HEADER ENDS
       width: 100%;
       min-width: 0;
       box-sizing: border-box;
+
     }
 
-    .form-trible>div {
-      min-width: 0;
-    }
+
 
 
 
@@ -329,20 +324,19 @@ HEADER ENDS
 
     #checkoutForm {
       display: none;
-
-      h3 {
-        font-weight: 100;
-        font-size: 1.2rem;
-      }
     }
 
     #checkoutForm fieldset {
+      display: flex;
+      flex-direction: column;
       border: 1px solid #8c8383;
       padding: 10px;
       margin-bottom: 12px;
 
-      legend {
-        font-size: 1rem;
+      legend,
+      label {
+        margin-top: 10px;
+        font-size: 1.2rem;
       }
     }
 
@@ -496,11 +490,10 @@ HEADER ENDS
         </div>
 
         <form id="checkoutForm" novalidate>
-          <h3>Checkout</h3>
 
           <!-- Kunduppgifter -->
           <fieldset>
-            <legend>Kunduppgifter</legend>
+            <legend>Checkout</legend>
 
             <div class="form-dubble">
 
@@ -540,15 +533,16 @@ HEADER ENDS
             </div>
 
 
+            <div class="form-dubble">
+              <div class="form-row">
+                <label>Telefon (mobil)</label>
+                <input type="tel" name="phone" required>
+              </div>
 
-            <div class="form-row">
-              <label>Telefon (mobil)</label>
-              <input type="tel" name="phone" required>
-            </div>
-
-            <div class="form-row">
-              <label>E-postadress</label>
-              <input type="email" name="email" required>
+              <div class="form-row">
+                <label>E-postadress</label>
+                <input type="email" name="email" required>
+              </div>
             </div>
           </fieldset>
 
