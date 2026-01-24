@@ -98,8 +98,8 @@ function printProducts() {
 
           <div class="img-dots">
             ${currentProduct.images.map((_, i) =>
-            `<span class="dot ${i === 0 ? 'active' : ''}"></span>`
-            ).join('')}
+      `<span class="dot ${i === 0 ? 'active' : ''}"></span>`
+    ).join('')}
           </div>
 
      </div>
@@ -314,9 +314,61 @@ function printCart() {
 /* BESTÄLL BTN */
 const checkoutForm = document.querySelector('#checkoutForm');
 
+/* SUBMIT BTN */
+const submitBtn = document.querySelector('#submitBtn');
+
+checkoutForm.addEventListener('input', validateForm);
+checkoutForm.addEventListener('change', validateForm);
+
+function validateForm() {
+  // 1. базовая HTML-валидация
+  let isValid = checkoutForm.checkValidity();
+
+  // 2. payment logic
+  const selectedPayment = checkoutForm.querySelector('input[name="payment"]:checked');
+
+  if (!selectedPayment) {
+    isValid = false;
+  }
+
+  // 3. faktura → personnummer
+
+  const PERSONNUMMER_REGEX = /^(\d{10}|\d{12}|\d{6}[- ]\d{4}|\d{8}[- ]\d{4})$/;
+
+  function isValidSwedishPersonnummer(value) {
+    return PERSONNUMMER_REGEX.test(value.trim());
+  }
+
+  if (selectedPayment?.value === 'invoice') {
+    if (!isValidSwedishPersonnummer(personnummerInput.value)) {
+      isValid = false;
+      personnummerInput.setCustomValidity('Ogiltigt personnummer');
+    } else {
+      personnummerInput.setCustomValidity('');
+    }
+  }
+
+  // 4. btn
+  submitBtn.disabled = !isValid;
+}
+
+/* blocking send if errors */
+checkoutForm.addEventListener('submit', (e) => {
+  if (!checkoutForm.checkValidity()) {
+    e.preventDefault();
+    checkoutForm.reportValidity();
+    return;
+  }
+
+  console.log('BESTÄLLNING OK');
+});
+
+
+/* OPEN CART */
+
 cartSection.addEventListener('click', (e) => {
 
-  // OPEN / TOGGLE
+
   if (e.target.closest('.orderCartBtn')) {
     checkoutForm.style.display =
       checkoutForm.style.display === 'block' ? 'none' : 'block';

@@ -320,6 +320,23 @@ HEADER ENDS
       gap: 10px;
     }
 
+    /* required */
+    input:required {
+      border-left: 3px solid #aaa;
+    }
+
+    /* invalid */
+    input:required:invalid {
+      border-left: 3px solid #e53935;
+      background: #ffecec;
+    }
+
+    /* valid */
+    input:required:valid {
+      border-left: 3px solid #2e7d32;
+    }
+
+
     @media screen and (min-width: 768px) {
 
       #productsList {
@@ -461,7 +478,7 @@ HEADER ENDS
           <p>Varukorgen är tom.</p>
         </div>
 
-        <form id="checkoutForm" novalidate>
+        <form id="checkoutForm">
 
           <!-- Kunduppgifter -->
           <fieldset>
@@ -476,7 +493,7 @@ HEADER ENDS
 
               <div class="form-row">
                 <label>Efternamn</label>
-                <input type="text" name="lastName" required>
+                <input type="text" name="lastName">
               </div>
             </div>
 
@@ -484,7 +501,7 @@ HEADER ENDS
 
               <div class="form-row">
                 <label>Adress (gata)</label>
-                <input type="text" name="address" required>
+                <input type="text" name="address">
               </div>
 
               <div class="form-row">
@@ -498,12 +515,12 @@ HEADER ENDS
 
               <div class="form-row">
                 <label>Postnummer</label>
-                <input type="text" name="zip" required>
+                <input type="text" name="zip">
               </div>
 
               <div class="form-row">
                 <label>Postort</label>
-                <input type="text" name="city" required>
+                <input type="text" name="city">
               </div>
             </div>
 
@@ -511,12 +528,12 @@ HEADER ENDS
             <div class="form-dubble">
               <div class="form-row">
                 <label>Telefon (mobil)</label>
-                <input type="tel" name="phone" required>
+                <input type="tel" name="phone">
               </div>
 
               <div class="form-row">
                 <label>E-postadress</label>
-                <input type="email" name="email" required>
+                <input type="email" name="email">
               </div>
             </div>
 
@@ -592,13 +609,13 @@ HEADER ENDS
 
 
           <div class="form-actions">
-            <button type="submit" disabled id="submitBtn">Beställ</button>
+            <button type="submit" disabled id="submitBtn">Lägg beställning</button>
             <button type="reset" id="resetBtn">Rensa beställning</button>
             <button type="button" id="closeCheckoutBtn">X</button>
           </div>
 
         </form>
-        
+
       </section>
 
       <section id="productsList"></section>
