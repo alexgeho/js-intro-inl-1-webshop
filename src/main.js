@@ -304,13 +304,22 @@ function printCart() {
    `;  
 }
 
-const checkoutForm = document.querySelector('#checkoutForm')
+const checkoutForm = document.querySelector('#checkoutForm');
+const closeCheckoutBtn = document.querySelector('#closeCheckoutBtn');
 
 cartSection.addEventListener('click', (e) => {
   if (e.target.classList.contains('orderCartBtn')) {
-    checkoutForm.style.display = 'block';
+    // toggle
+    checkoutForm.style.display =
+      checkoutForm.style.display === 'block' ? 'none' : 'block';
   }
 });
+
+closeCheckoutBtn.addEventListener('click', () => {
+  checkoutForm.style.display = 'none';
+});
+
+
 /* END - PRINT CART */
 
 /* TEST */
