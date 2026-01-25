@@ -182,46 +182,6 @@ function decreaseProductCount(e) {
 const cartTotalElement = document.querySelector('#cartTotal')
 const cartSection = document.querySelector('#cart');
 
-cartSection.addEventListener('click', (e) => {
-
-  /* DECREASE */
-  if (e.target.classList.contains('decrease-cart-product')) {
-    const index = Number(e.target.dataset.id);
-
-    if (cart[index].amount > 1) {
-      cart[index].amount -= 1;
-    } else {
-      cart.splice(index, 1);
-    }
-
-    updateCartTotals();
-    printCart();
-    return;
-  }
-
-  /* INCREASE */
-  if (e.target.classList.contains('increase-cart-product')) {
-    const index = Number(e.target.dataset.id);
-    cart[index].amount += 1;
-
-    updateCartTotals();
-    printCart();
-    return;
-  }
-
-  /* DELETE */
-  if (e.target.classList.contains('delete-product')) {
-    const index = Number(e.target.dataset.id);
-    cart.splice(index, 1);
-
-    updateCartTotals();
-    printCart();
-    return;
-  }
-});
-
-
-
 
 
 /* BESTÄLL BTN */
