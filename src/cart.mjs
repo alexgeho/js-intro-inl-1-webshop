@@ -133,4 +133,26 @@ export function initCart(products) {
         }
     });
 
+
+    /* OPEN/CLOSE Checkou */
+
+    cartSection.addEventListener('click', (e) => {
+
+  if (e.target.closest('.orderCartBtn')) {
+    checkoutForm.style.display =
+      checkoutForm.style.display === 'block' ? 'none' : 'block';
+    return;
+  }
+
+  // CLOSE (X) 
+
+  if (e.target.closest('.closeCheckoutBtn')) {
+
+
+    checkoutForm.style.display = 'none';
+    return;
+  }
+
+});
+
 }
