@@ -1,0 +1,94 @@
+/* 
+HEADER STARTS
+*/
+header {
+  display: flex;
+  margin: 20px 0 20px;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 100;
+  margin: 0;
+}
+
+#navBugerJs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #999;
+  width: 100%;
+  min-height: 40%;
+  display: none;
+  z-index: 2000;
+}
+
+#navBugerJs.open {
+  position: absolute;
+  max-width: 80%;
+  background-color: #eeeeee;
+  display: inline-block;
+}
+#navBugerJs.open ul {
+  list-style: none;
+}
+#navBugerJs.open ul a {
+  text-decoration: none;
+  font-size: 2rem;
+  color: #000;
+}
+#navBugerJs.open ul a:hover {
+  text-decoration: underline;
+}
+
+#navBugerJs ul li + li {
+  margin-top: 10px;
+}
+
+.burger {
+  width: 30px;
+  height: 22px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.burger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #000;
+  transition: 0.3s;
+}
+
+.burger span:nth-child(1) {
+  top: 0;
+}
+
+.burger span:nth-child(2) {
+  top: 9px;
+}
+
+.burger span:nth-child(3) {
+  bottom: 0;
+}
+
+.burger.open span:nth-child(1) {
+  top: 9px;
+  transform: rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  bottom: 9px;
+  transform: rotate(-45deg);
+}
+
+/* 
+HEADER ENDS
+*/

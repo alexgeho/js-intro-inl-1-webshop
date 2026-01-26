@@ -103,6 +103,8 @@ export function initCheckout() {
     checkoutForm.addEventListener('input', (e) => {
         const input = e.target;
         if (!(input instanceof HTMLInputElement)) return;
+        // if (input.name === 'phone') return;
+        // if (!input.hasAttribute('pattern')) return;
         if (!input.id) return;
 
         input.dataset.touched = 'true';
@@ -136,6 +138,29 @@ export function initCheckout() {
     }
 
     function getPatternErrorMessage(input) {
+        if (
+            input.id === 'firstName' ||
+            input.id === 'lastName' ||
+            input.id === 'city'
+        ) {
+            return 'Endast bokstäver tillåtna';
+        }
+        else if (input.id === 'phone') {
+            return 'Ange ett giltigt telefonnummer';
+        }
+        else if (input.id === 'email') {
+            return 'Ange en giltig e-postadress';
+        }
+        else if (input.id === 'zip') {
+            return 'Ange ett giltigt postnummer';
+        }
+        else {
+            return 'Ogiltigt format';
+        }
+    }
+
+
+    /* function getPatternErrorMessage(input) {
         switch (input.id) {
             case 'firstName':
             case 'lastName':
@@ -154,5 +179,5 @@ export function initCheckout() {
             default:
                 return 'Ogiltigt format';
         }
-    }
+    } */
 }

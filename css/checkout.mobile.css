@@ -1,0 +1,33 @@
+#checkoutForm {
+  display: none;
+}
+
+#checkoutForm fieldset {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #8c8383;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+#checkoutForm fieldset legend,
+#checkoutForm fieldset label {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.datum-cvc {
+  display: flex;
+  gap: 10px;
+}
+
+input[data-touched=true]:invalid {
+  border: 2px solid #c62828;
+}
+
+input[data-touched=true]:valid {
+  border: 2px solid #2e7d32;
+}
+
+.error-message {
+  font-size: 0.9rem;
+}

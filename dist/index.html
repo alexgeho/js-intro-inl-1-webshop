@@ -6,7 +6,7 @@
   <link rel="icon"
     href="data:image/svg+xml, svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
   <title>FED25D | Inlämningsuppgift 1</title>
@@ -15,8 +15,8 @@
 </head>
 
 <body>
-  
-    <div id="today"></div>
+
+  <div id="today"></div>
 
   <header>
 
@@ -39,6 +39,8 @@
       </nav>
     </div>
   </header>
+
+ 
   <main>
 
     <aside>
@@ -130,11 +132,13 @@
             </div>
 
 
+            <!-- small:id="phoneError" -->
+
             <div class="form-dubble">
               <div class="form-row">
                 <label>Telefon (mobil)</label>
-                <input id="phone" type="tel" name="phone" required pattern="^\+46[0-9]{7,13}$">
-                <small class="error-message" id="phoneError"></small>
+                <input id="phone" name="phone" inputmode="numeric" pattern="\d*">
+                <small class="error-message"></small>
               </div>
 
               <div class="form-row">
