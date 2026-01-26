@@ -127,8 +127,24 @@ header h1 {
 HEADER ENDS
 */
 #hero {
-  background: red;
+  background: #f0fcef;
   min-height: 200px;
+  padding: 0 20px 130px;
+  margin-bottom: 20px;
+}
+#hero h1 {
+  font-weight: 100;
+  font-size: 2.5rem;
+}
+#hero p {
+  font-size: 1.8rem;
+}
+#hero a {
+  font-size: 1.5rem;
+  color: black;
+}
+#hero a:hover {
+  text-decoration: none;
 }
 
 /* START MAIN */
@@ -365,4 +381,21 @@ input[data-touched=true]:valid {
 
 .error-message {
   font-size: 0.9rem;
+}
+
+#order-info {
+  margin-bottom: 20px;
+}
+#order-info h2 {
+  font-weight: 100;
+  margin: 10px 0 5px;
+}
+#order-info summary {
+  font-size: 1.4rem;
+}
+#order-info ul {
+  margin: 5px;
+}
+#order-info li {
+  font-size: 1.2rem;
 }
