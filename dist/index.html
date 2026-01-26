@@ -1,25 +1,253 @@
 <!doctype html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FED25D | Inlämningsuppgift 1</title>
-    <script type="module" crossorigin src="/fed25d-js-intro-inl-1-webshop/assets/index-BQlXjhK4.js"></script>
-    <link rel="stylesheet" crossorigin href="/fed25d-js-intro-inl-1-webshop/assets/index-BCuA4xYi.css">
-  </head>
-  <body>
-    <header>
-      header
-    </header>
 
-    <main>
-      <h1>Webshop</h1>
-      <button id="clickMe">Klicka på mig</button>
-    </main>
-    
-    <footer>
-      footer
-    </footer>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon"
+    href="data:image/svg+xml, svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
+  <title>FED25D | Inlämningsuppgift 1</title>
+  <script type="module" crossorigin src="/js-intro-inl-1-webshop/assets/index-B98NaQzb.js"></script>
+  <link rel="stylesheet" crossorigin href="/js-intro-inl-1-webshop/assets/index-CkEaxvmp.css">
+</head>
+
+<body>
+  
+    <div id="today"></div>
+
+  <header>
+
+
+    <h1>Jörgens butik för armeringselement i Sverige</h1>
+    <div>
+      <button id="openCloseNavMenu" class="burger">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="navBugerJs">
+        <ul id="menuLinks">
+          <li><a href="https://www.google.com" target="_blank">Hem</a></li>
+          <li><a href="#home">Kategorier</a></li>
+          <li><a href="#home">Om oss</a></li>
+          <li><a href="#home">FAQ</a></li>
+          <li><a href="#home">Contact</a></li>
+        </ul>
+
+      </nav>
+    </div>
+  </header>
+  <main>
+
+    <aside>
+      <label>
+        Category:
+        <select id="categoryFilter">
+          <option value="">All</option>
+          <option value="bockad-armering">Bockad Armering</option>
+          <option value="for-pelare">För pelare</option>
+          <option value="for-fundament">För fundament</option>
+          <option value="for-vaggar">För väggar</option>
+        </select>
+      </label>
+
+      <label>
+        Sortera:
+        <button id="sortByNameBtn">Namn (A-Z)</button>
+        <button id="sortByPriceBtn">Dyrast överst</button>
+        <button id="sortByRatingBtn">Sortera efter rating</button>
+
+      </label>
+
+
+
+
+    </aside>
+
+    <section>
+
+      <section class="hidden">
+        <h2>Varukorgen</h2>
+        <p class="cartTotal" id="cartTotal">0 kr</p>
+        <div id="cart">
+          <p>Varukorgen är tom.</p>
+        </div>
+
+        <form id="checkoutForm">
+
+          <!-- Kunduppgifter -->
+          <fieldset>
+            <legend>Checkout</legend>
+
+            <div class="form-dubble">
+
+              <div class="form-row">
+                <label>Förnamn</label>
+
+                <input id="firstName" type="text" name="firstName" required pattern="[A-Za-zÅÄÖåäö\- ]+"
+                  aria-describedby="firstNameError">
+                <small class="error-message" id="firstNameError" aria-live="polite"></small>
+
+              </div>
+
+              <div class="form-row">
+                <label>Efternamn</label>
+                <input id="lastName" type="text" name="lastName" required pattern="[A-Za-zÅÄÖåäö\- ]+">
+                <small class="error-message" id="lastNameError"></small>
+
+              </div>
+            </div>
+
+            <div class="form-dubble">
+
+              <div class="form-row">
+                <label>Adress (gata)</label>
+                <input id="address" type="text" name="address" required pattern="[A-Za-zÅÄÖåäö0-9.\- ]{3,}">
+                <small class="error-message" id="addressError"></small>
+              </div>
+
+              <div class="form-row">
+                <label>Ev. portkod</label>
+                <input type="text" name="portCode">
+              </div>
+
+            </div>
+
+            <div class="form-dubble">
+              <div class="form-row">
+                <label>Postnummer</label>
+                <input id="zip" type="text" name="zip" required pattern="\d{3}\s?\d{2}">
+                <small class="error-message" id="zipError"></small>
+              </div>
+
+              <div class="form-row">
+                <label>Postort</label>
+                <input id="city" type="text" name="city" required pattern="[A-Za-zÅÄÖåäö\- ]+">
+                <small class="error-message" id="cityError"></small>
+              </div>
+            </div>
+
+
+            <div class="form-dubble">
+              <div class="form-row">
+                <label>Telefon (mobil)</label>
+                <input id="phone" type="tel" name="phone" required pattern="^\+46[0-9]{7,13}$">
+                <small class="error-message" id="phoneError"></small>
+              </div>
+
+              <div class="form-row">
+                <label>E-postadress</label>
+                <input id="email" type="email" name="email" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+                <small class="error-message" id="emailError"></small>
+
+              </div>
+            </div>
+
+          </fieldset>
+
+          <fieldset>
+            <legend>Betalsätt</legend>
+
+
+            <!-- Kort -->
+            <label class="radio-row">
+              <input type="radio" name="payment" value="card">
+              <span>Kort</span>
+            </label>
+
+            <!-- Kort Fields-->
+            <div id="cardFields" hidden>
+
+              <div class="form-row">
+                <label for="cardNumber">Kortnummer</label>
+                <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number">
+              </div>
+
+              <div class="datum-cvc">
+
+                <div class="form-row">
+                  <label for="cardExpiry">Datum / År</label>
+                  <input id="cardExpiry" name="cardExpiry" type="text" placeholder="MM/YY" inputmode="numeric"
+                    autocomplete="cc-exp">
+                </div>
+
+                <div class="form-row">
+                  <label for="cardCvc">CVC</label>
+                  <input id="cardCvc" name="cardCvc" type="text" inputmode="numeric" autocomplete="cc-csc">
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Faktura-->
+            <label class="radio-row">
+              <input type="radio" name="payment" value="invoice">
+              <span>Faktura</span>
+            </label>
+
+            <!-- Faktura Fields-->
+            <div id="invoiceFields" hidden>
+              <label for="personnummer">Personnummer</label>
+              <input type="text" id="personnummer" name="personnummer" placeholder="YYYYMMDD-XXXX">
+            </div>
+
+
+          </fieldset>
+
+          <fieldset>
+            <legend>Övrigt</legend>
+
+            <label>
+              <input type="checkbox" required>
+              Jag godkänner behandling av personuppgifter
+            </label>
+
+            <label>
+              <input type="checkbox" checked>
+              Jag vill beställa nyhetsbrev
+            </label>
+
+            <div class="form-row">
+              <label>Rabattkod</label>
+              <input type="text" name="discount">
+            </div>
+          </fieldset>
+
+
+          <div class="form-actions">
+            <button type="submit" disabled id="submitBtn">Lägg beställning</button>
+            <button type="reset" id="resetBtn">Rensa beställning</button>
+            <button type="button" id="closeCheckoutBtn">X</button>
+          </div>
+
+        </form>
+
+      </section>
+
+      <section id="productsList"></section>
+
+      <img src="" alt="">
+
+      <div id="msg"></div>
+
+      <label>
+        Lägg till krydda:
+        <input type="text" id="newMunkField">
+      </label>
+
+      <button id="addMunkBtn">Lägg till</button>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    footer
+  </footer>
+
+</body>
+
 </html>
