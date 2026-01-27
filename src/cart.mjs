@@ -37,16 +37,53 @@ export function initCart(products) {
 
     }
 
-    function updateCartTotals() {
 
+    const cartMessagesElement = document.querySelector('#cartMessages');
 
-        /* METHOD 2 for count cart's total */
+    function updateCartTotals(now = new Date('2026-01-27T09:00:00')) {
 
-        const cartTotal = cart.reduce((partialSum, product) => {
-            return partialSum + (product.price * product.amount);
+        let total = cart.reduce((sum, product) => {
+            return sum + product.price * product.amount;
         }, 0);
 
-        cartTotalElement.textContent = `Totalt: ${cartTotal} kr`;
+        const messages = [];
+
+        // --- MONDAY DISCOUNT ---
+        const isMonday = now.getDay() === 1;
+        const beforeTen = now.getHours() < 10;
+
+        if (isMonday && beforeTen) {
+            const discount = total * 0.10;
+            total -= discount;
+            messages.push('Måndagsrabatt: −10 %');
+        }
+
+        // --- BULK DISCOUNT ---
+        cart.forEach(product => {
+            if (product.amount >= 10) {
+                const discount = product.price * product.amount * 0.10;
+                total -= discount;
+                messages.push(`Mängdrabatt: −10 % på ${product.name}`);
+            }
+        });
+
+        // --- SHIPPING ---
+        const totalItems = cart.reduce((sum, p) => sum + p.amount, 0);
+
+        if (totalItems <= 15 && total > 0) {
+            const shipping = 25 + total * 0.10;
+            total += shipping;
+            messages.push(`Frakt: ${Math.round(shipping)} kr`);
+        } else {
+            messages.push('Fri frakt');
+        }
+
+        // --- RENDER ---
+        cartTotalElement.textContent = `Totalt: ${Math.round(total)} kr`;
+
+        cartMessagesElement.innerHTML = messages
+            .map(msg => `<p>${msg}</p>`)
+            .join('');
 
         highlightCartTotalChange();
     }
