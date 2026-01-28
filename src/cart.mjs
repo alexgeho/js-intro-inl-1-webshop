@@ -39,7 +39,7 @@ export function initCart(products) {
 
 
     const cartMessagesElement = document.querySelector('#cartMessages');
-/* FOR TESTS::: '2026-01-31T09:00:00' */
+    /* FOR TESTS::: '2026-01-31T09:00:00' */
     function updateCartTotals(now = new Date()) {
 
         let total = cart.reduce((sum, product) => {
@@ -47,6 +47,21 @@ export function initCart(products) {
         }, 0);
 
         const messages = [];
+
+
+        // --- PAYMENT RULE: NO INVOICE OVER 800 KR ---
+
+        const invoiceRadio = document.querySelector('input[name="payment"][value="invoice"]');
+
+        if (total > 800) {
+            invoiceRadio.disabled = true;
+
+            if (invoiceRadio.checked) {
+                invoiceRadio.checked = false;
+            }
+        } else {
+            invoiceRadio.disabled = false;
+        }
 
         // --- MONDAY DISCOUNT ---
         const isMonday = now.getDay() === 1;
