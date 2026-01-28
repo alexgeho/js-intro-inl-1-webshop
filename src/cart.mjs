@@ -38,6 +38,27 @@ export function initCart(products) {
     }
 
 
+    const checkoutForm = document.querySelector('#checkoutForm');
+
+
+    // --- PAYMENT RULE: 15 min to finalise order ---
+
+    let checkoutTimeoutId = null;
+    const CHECKOUT_TIMEOUT_MS = 15 * 60 * 1000; // 15 min
+
+    function startCheckoutTimeout() {
+        clearTimeout(checkoutTimeoutId);
+
+        checkoutTimeoutId = setTimeout(() => {
+            checkoutForm.reset();
+
+            alert('Beställningen avbröts – du var för långsam.');
+
+            checkoutForm.style.display = 'none';
+        }, CHECKOUT_TIMEOUT_MS);
+    }
+
+
     const cartMessagesElement = document.querySelector('#cartMessages');
     /* FOR TESTS::: '2026-01-31T09:00:00' */
     function updateCartTotals(now = new Date()) {
@@ -47,6 +68,7 @@ export function initCart(products) {
         }, 0);
 
         const messages = [];
+
 
 
         // --- PAYMENT RULE: NO INVOICE OVER 800 KR ---
@@ -204,15 +226,22 @@ export function initCart(products) {
     });
 
 
-    /* OPEN/CLOSE Checkout */
+    /* OPEN/CLOSE Checkout - TIMER START */
 
     cartSection.addEventListener('click', (e) => {
 
         if (e.target.closest('.orderCartBtn')) {
-            checkoutForm.style.display =
-                checkoutForm.style.display === 'block' ? 'none' : 'block';
+            const isOpening = checkoutForm.style.display !== 'block';
+
+            checkoutForm.style.display = isOpening ? 'block' : 'none';
+
+            if (isOpening) {
+                startCheckoutTimeout(); // START TIMER
+            }
+
             return;
         }
+
 
         // CLOSE (X) 
 
