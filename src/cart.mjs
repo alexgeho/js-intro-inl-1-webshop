@@ -40,10 +40,8 @@ export function initCart(products) {
 
     const checkoutForm = document.querySelector('#checkoutForm');
 
-
-    // --- PAYMENT RULE: 15 min to finalise order ---
-
     let checkoutTimeoutId = null;
+
     const CHECKOUT_TIMEOUT_MS = 15 * 60 * 1000; // 15 min
 
     function startCheckoutTimeout() {
@@ -60,8 +58,20 @@ export function initCart(products) {
 
 
     const cartMessagesElement = document.querySelector('#cartMessages');
+
+    /* FUNCTIONS */
+    function getWeekNumber(date) {
+        const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+        const dayNum = d.getUTCDay() || 7;
+        d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+        const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    }
+
+
+
     /* FOR TESTS::: '2026-01-31T09:00:00' */
-    function updateCartTotals(now = new Date()) {
+    function updateCartTotals(now = new Date('2026-02-03T12:00:00')) {
 
         let total = cart.reduce((sum, product) => {
             return sum + product.price * product.amount;
@@ -121,6 +131,17 @@ export function initCart(products) {
                 messages.push(`Mängdrabatt: −10 % på ${product.name}`);
             }
         });
+
+        // --- EVEN WEEK TUESDAY DISCOUNT (25 kr) ---
+        const weekNumber = getWeekNumber(now);
+        const isEvenWeek = weekNumber % 2 === 0;
+        const isTuesday = now.getDay() === 2;
+
+        if (isEvenWeek && isTuesday && total > 25) {
+            total -= 25;
+            messages.push('Tisdagsrabatt: −25 kr');
+        }
+
 
         // --- SHIPPING ---
         const totalItems = cart.reduce((sum, p) => sum + p.amount, 0);
