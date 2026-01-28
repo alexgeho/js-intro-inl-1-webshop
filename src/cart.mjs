@@ -39,8 +39,8 @@ export function initCart(products) {
 
 
     const cartMessagesElement = document.querySelector('#cartMessages');
-
-    function updateCartTotals(now = new Date('2026-01-27T09:00:00')) {
+/* FOR TESTS::: '2026-01-31T09:00:00' */
+    function updateCartTotals(now = new Date()) {
 
         let total = cart.reduce((sum, product) => {
             return sum + product.price * product.amount;
@@ -57,6 +57,24 @@ export function initCart(products) {
             total -= discount;
             messages.push('Måndagsrabatt: −10 %');
         }
+
+
+        // --- WEEKEND SURCHARGE (15%) ---
+        const day = now.getDay();
+        const hour = now.getHours();
+        const isFridayAfter15 = day === 5 && hour >= 15;
+        const isSaturday = day === 6;
+        const isSunday = day === 0;
+        const isMondayBefore3 = day === 1 && hour < 3;
+
+        const isWeekendSurcharge =
+            isFridayAfter15 || isSaturday || isSunday || isMondayBefore3;
+
+        if (isWeekendSurcharge) {
+            const surcharge = total * 0.15;
+            total += surcharge;
+        }
+
 
         // --- BULK DISCOUNT ---
         cart.forEach(product => {
