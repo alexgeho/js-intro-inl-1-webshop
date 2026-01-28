@@ -22,6 +22,30 @@ const products = [
   { id: 12, name: 'L-detalj', price: 32, rating: 4.4, category: 'for-vaggar', images: ['vara5.png', 'vara5-2.png'] },
   { id: 13, name: 'M-detalj', price: 25, rating: 4.1, category: 'for-vaggar', images: ['vara5.png', 'vara5-2.png'] },
   { id: 14, name: 'N-detalj', price: 20, rating: 3.9, category: 'for-vaggar', images: ['vara5.png', 'vara5-2.png'] },
+  { id: 144, name: 'N-detalj', price: 20, products_aritmetik: [
+  // MUNKAR – CLASSIC
+  { id: 111, name: 'ARA-detalj', price: 25, rating: 4.2, category: 'bockad-armering', images: ['vara1.png', 'vara1-2.png'] },
+  { id: 211, name: 'ARB-detalj', price: 22, rating: 3.8, category: 'bockad-armering', images: ['vara1.png', 'vara1-2.png'] },
+  { id: 311, name: 'ARC-detalj', price: 28, rating: 4.7, category: 'bockad-armering', images: ['vara1.png', 'vara1-2.png'] },
+
+  // MUNKAR – VEGAN
+  { id: 411, name: 'ARD-detalj', price: 30, rating: 4.3, category: 'for-pelare', images: ['vara3.png', 'vara3-2.png'] },
+  { id: 511, name: 'ARE-detalj', price: 29, rating: 4.1, category: 'for-pelare', images: ['vara3.png', 'vara3-2.png'] },
+  { id: 611, name: 'ARF-detalj', price: 31, rating: 4.5, category: 'for-pelare', images: ['vara3.png', 'vara3-2.png'] },
+
+  // MUNKAR – PROTEIN
+  { id: 711, name: 'ARG-detalj', price: 35, rating: 4.8, category: 'for-fundament', images: ['vara4.png', 'vara4-2.png'] },
+  { id: 811, name: 'ARH-detalj', price: 34, rating: 4.4, category: 'for-fundament', images: ['vara4.png', 'vara4-2.png'] },
+  { id: 911, name: 'ARI-detalj', price: 36, rating: 4.9, category: 'for-fundament', images: ['vara4.png', 'vara4-2.png'] },
+  { id: 1011, name: 'ARJ-detalj', price: 37, rating: 4.6, category: 'for-fundament', images: ['vara4.png', 'vara4-2.png'] },
+
+  // DRINKS
+  { id: 1111, name: 'ARK-detalj', price: 30, rating: 4.0, category: 'for-vaggar', images: ['vara5.png', 'vara5-2.png'] },
+  { id: 1211, name: 'ARL-detalj', price: 32, rating: 4.4, category: 'for-vaggar', images: ['vara5.png', 'vara5-2.png'] },
+  { id: 1311, name: 'ARM-detalj', price: 25, rating: 4.1, category: 'for-vaggar', images: ['vara5.png', 'vara5-2.png'] },
+  { id: 1411, name: 'ARN-detalj', price: 20, rating: 3.9, category: 'for-vaggar', images: ['vara5.png', 'vara5-2.png'] },
+], rating: 3.9, category: 'for-vaggar', images: ['vara5.png', 'vara5-2.png'] },
 ];
+
 
 export default products;
