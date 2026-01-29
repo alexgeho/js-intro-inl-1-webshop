@@ -71,13 +71,36 @@ export function initCart(products) {
 
 
     /* FOR TESTS::: '2026-01-31T09:00:00' */
-    function updateCartTotals(now = new Date('2026-02-03T12:00:00')) {
+    function updateCartTotals(now = new Date('2026-02-14T12:00:00')) {
+        const messages = [];
+
+        // --- VALENTINE'S DAY BONUS ---
+        const isValentinesDay =
+            now.getDate() === 14 && now.getMonth() === 1; // February = 1
+
+        if (isValentinesDay) {
+            const heartDonut = products.find(p => p.name === 'Hjärtformad munk');
+
+            if (heartDonut) {
+                const index = cart.findIndex(p => p.name === 'Hjärtformad munk');
+
+                if (index === -1) {
+                    cart.push({
+                        ...heartDonut,
+                        amount: 1
+                    });
+                    messages.push('Alla Hjärtans Dag: Hjärtformad munk lades till 🎁');
+                }
+            }
+        }
+
+        // --- VALENTINE'S DAY BONUS END ---
 
         let total = cart.reduce((sum, product) => {
             return sum + product.price * product.amount;
         }, 0);
 
-        const messages = [];
+        
 
 
 
