@@ -3,7 +3,9 @@ HEADER STARTS
 */
  header {
      display: flex;
+     justify-content: space-around;
      margin: 20px 0 20px;
+
  }
 
  header h1 {
@@ -52,7 +54,9 @@ HEADER STARTS
      border: 0;
      background: none;
      cursor: pointer;
-     position: relative
+     position: relative;
+
+
  }
 
  .burger span {
@@ -99,9 +103,9 @@ HEADER ENDS
      header {
          display: flex;
          flex-direction: column;
-         
-         h1{
-            font-size: 1.6rem;
+
+         h1 {
+             font-size: 1.6rem;
          }
      }
 
@@ -143,11 +147,11 @@ HEADER ENDS
      header {
          display: flex;
          flex-direction: row;
-         align-items: center; 
+         align-items: center;
          gap: 20px;
 
          h1 {
-            font-size: 2rem;
+             font-size: 2rem;
          }
      }
 
