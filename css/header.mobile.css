@@ -119,3 +119,34 @@ HEADER ENDS
     text-decoration: underline;
   }
 }
+@media screen and (min-width: 1200px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+  .burger {
+    display: none;
+  }
+  #navBugerJs {
+    background: none;
+  }
+  #navBugerJs ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 1.4rem;
+    padding: 0;
+  }
+  #navBugerJs ul li {
+    list-style: none;
+  }
+  #navBugerJs ul a {
+    text-decoration: none;
+    color: #000;
+  }
+  #navBugerJs ul a:hover {
+    text-decoration: underline;
+  }
+}

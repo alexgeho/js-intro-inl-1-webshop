@@ -117,12 +117,49 @@ HEADER ENDS
          gap: 30px;
          font-size: 1.4rem;
          padding: 0;
-         
 
          li {
              list-style: none;
-             
+         }
 
+         a {
+             text-decoration: none;
+             color: #000;
+         }
+
+         a:hover {
+             text-decoration: underline;
+         }
+     }
+ }
+
+
+ @media screen and (min-width: 1200px) {
+
+     header {
+         display: flex;
+         flex-direction: row;
+         align-items: center; // КЛЮЧ
+         gap: 30px;
+     }
+
+     .burger {
+         display: none;
+     }
+
+     #navBugerJs {
+         background: none;
+     }
+
+     #navBugerJs ul {
+         display: flex;
+         align-items: center;
+         gap: 30px;
+         font-size: 1.4rem;
+         padding: 0;
+
+         li {
+             list-style: none;
          }
 
          a {
