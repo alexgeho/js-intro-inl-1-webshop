@@ -44,9 +44,7 @@ HEADER STARTS
      }
  }
 
- #navBugerJs ul li+li {
-     margin-top: 10px;
- }
+
 
  .burger {
      width: 30px;
@@ -95,3 +93,47 @@ HEADER STARTS
  /* 
 HEADER ENDS
 */
+
+ @media screen and (min-width: 768px) {
+
+     header {
+         display: flex;
+         flex-direction: column;
+     }
+
+     .burger {
+         display: none;
+     }
+
+     #navBugerJs {
+         display: block;
+         position: static;
+         background: none;
+     }
+
+     #navBugerJs ul {
+         display: flex;
+         align-items: center;
+         gap: 30px;
+         font-size: 1.4rem;
+         padding: 0;
+         
+
+         li {
+             list-style: none;
+             
+
+         }
+
+         a {
+             text-decoration: none;
+             color: #000;
+         }
+
+         a:hover {
+             text-decoration: underline;
+         }
+     }
+
+
+ }

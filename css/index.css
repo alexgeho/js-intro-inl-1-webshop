@@ -126,6 +126,45 @@ header h1 {
 /* 
 HEADER ENDS
 */
+@media screen and (min-width: 768px) {
+  #navBugerJs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #999;
+    width: 100%;
+    min-height: 40%;
+    z-index: 2000;
+  }
+  #navBugerJs.open {
+    position: absolute;
+    max-width: 80%;
+    background-color: #eeeeee;
+    display: inline-block;
+  }
+  #navBugerJs.open ul {
+    list-style: none;
+  }
+  #navBugerJs.open ul a {
+    text-decoration: none;
+    font-size: 2rem;
+    color: #000;
+  }
+  #navBugerJs.open ul a:hover {
+    text-decoration: underline;
+  }
+  #navBugerJs ul li + li {
+    margin-top: 10px;
+  }
+  .burger {
+    width: 30px;
+    height: 22px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    position: relative;
+  }
+}
 #hero {
   background: #f0fcef;
   min-height: 200px;
