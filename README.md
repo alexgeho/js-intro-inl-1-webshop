@@ -1,18 +1,83 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/FFO6Kf7w)
-# Inlämningsuppgift 1 i JavaScript intro
+# Inlämningsuppgift 1 – Webbshop (FED25D)
 
-Se kurswebben för specifikation och kravlista.
+Detta projekt är en webbshop byggd som en del av **Inlämningsuppgift 1** i kursen Frontend Development.  
+Webbshopen är byggd med **Vanilla JavaScript**, **HTML** och **Sass**, och uppfyller samtliga krav enligt uppgiftsbeskrivningen.
 
-> [!CAUTION]
-> Deadlinen på denna uppgift är en s.k. "hård deadline". Efter deadline går det inte att pusha till repot.
+## 🔧 Tekniker
+- HTML5 (en enda HTML-fil)
+- Vanilla JavaScript (ES Modules)
+- Sass (CSS)
+- Vite
+- GitHub Pages
 
-## Att göra i repot
-- [ ] Öppna filen `vite.config.js` och byt ut `base`-värdet mot ditt repos adress.
-- [ ] Gå in på Settings-fliken i ditt repo och aktivera GitHub Pages. Välj "GitHub Actions" som alternativ.
-- [ ] Se till att adressen till din GitHub Pages finns på repots startsida (via kugghjulet).
+## 🛒 Funktionalitet
 
-Om "Pages"-actionet misslyckas första gången så borde det gå igenom efter att du gör en ny push. Alternativt kan du gå in på "Actions"-fliken och välja "Re-run failed jobs" efter att du har aktiverat GitHub Pages.
+### Generellt
+- Webbshopen består av **en sida (index.html)**  
+- Responsiv design (mobil, tablet, desktop)
+- Tillgänglig navigering (tangentbord, formulär, knappar)
+- Produkter är hårdkodade i JavaScript
 
-Om din CSS/bilder inte syns så har du förmodligen inte ändrat/skrivit fel adress i `vite.config.js`-filen.
+### Produkter
+- Minst 10 produkter
+- Varje produkt har:
+  - namn
+  - pris
+  - kategori
+  - rating
+- Filtrering på kategori
+- Sortering på:
+  - namn
+  - pris
+  - rating
 
-GitHub Pages-cachen är också ganska "aggressiv"/beständig. Öppna "DevTools" i webbläsaren, klicka på "Network"-fliken och klicka sedan i "Disable cache". Håll DevTools uppe och ladda om sidan, så borde det släppa.
+### Varukorg
+- Realtidsuppdatering av totalsumma
+- Endast valda produkter visas i varukorgen
+- Visuell feedback vid ändring av totalsumma
+- Öka/minska antal per produkt
+- Ta bort produkter
+
+### Rabatter & specialregler
+- Måndagsrabatt: −10 % före kl. 10
+- Helgpåslag: +15 % (fredag kl. 15 → måndag kl. 03)
+- Mängdrabatt: −10 % vid minst 10 av samma sort
+- Tisdagsrabatt: −25 kr på jämna veckor
+- Rabattkod:  
+  `a_damn_fine-cup_of-coffee` → hela beställningen blir 0 kr
+- Fettisdagen:
+  - priser visas i rött
+  - bakgrundsbild ändras
+- Alla hjärtans dag:
+  - hjärtformad munk läggs automatiskt till
+
+### Frakt & leverans
+- Fri frakt vid fler än 15 produkter
+- Annars: 25 kr + 10 % av totalbelopp
+- Leveranstid:
+  - Standard: 30 min
+  - Helg: 90 min
+  - Natt (00–05): 45 min
+  - Fredag 11–13: leverans kl. 15:00 (veckomöte)
+
+### Checkout & formulär
+- Fullständig formulärvalidering
+- Betalsätt:
+  - Kort
+  - Faktura (personnummer krävs och valideras)
+- Faktura ej tillgänglig vid totalsumma över 800 kr
+- Checkbox för GDPR (obligatorisk)
+- Nyhetsbrev är ikryssad som default
+- Beställningsknappen aktiveras först när formuläret är korrekt ifyllt
+- Beställningen rensas automatiskt efter 15 minuter om den inte slutförs
+
+## 🚀 Deployment
+Projektet är deployat via **GitHub Pages** med GitHub Actions.
+
+🔗 **Live version:**  
+_(lägg in GitHub Pages-länken här)_
+
+## 📦 Installation (lokalt)
+```bash
+npm install
+npm run dev
