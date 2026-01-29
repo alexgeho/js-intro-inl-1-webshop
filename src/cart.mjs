@@ -71,7 +71,16 @@ export function initCart(products) {
 
 
     /* FOR TESTS::: '2026-01-31T09:00:00' */
-    function updateCartTotals(now = new Date('2026-02-14T12:00:00')) {
+    function updateCartTotals(now = new Date('2026-02-17T12:00:00')) {
+
+        const isShroveTuesday = now.getDay() === 2; // 2 = Tuesday
+
+        if (isShroveTuesday) {
+            document.body.classList.add('fettisdagen');
+        } else {
+            document.body.classList.remove('fettisdagen');
+        }
+
         const messages = [];
 
         // --- VALENTINE'S DAY BONUS ---
@@ -100,7 +109,7 @@ export function initCart(products) {
             return sum + product.price * product.amount;
         }, 0);
 
-        
+
 
 
 

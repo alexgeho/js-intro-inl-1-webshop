@@ -1,37 +1,52 @@
    body {
-       padding: 0 15px;
+     padding: 0 15px;
    }
 
    html,
    body {
-       height: 100%;
-       display: flex;
-flex-direction: column;   }
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+   }
 
    main {
-       display: block;
+     display: block;
    }
 
 
 
-    /* START - Input */
-    button {
-      padding: 5px;
-      margin: 5px;
-    }
+   /* START - Input */
+   button {
+     padding: 5px;
+     margin: 5px;
+   }
 
-    input {
-      border: 1px solid #999;
-      border-radius: 4px;
-    }
+   input {
+     border: 1px solid #999;
+     border-radius: 4px;
+   }
 
-    /* END - Input */
-    /* 
+   /* END - Input */
+   /* 
 
     
     #checkoutForm {
       display: none;
     }
  */
-   
-  
+
+   /* FETTISDAGEN */
+   body.fettisdagen {
+     background-image: url('/img/semla.jpg');
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+   }
+
+   /* all prices */
+   body.fettisdagen .price,
+   body.fettisdagen .product-price,
+   body.fettisdagen #cartTotal {
+     color: red;
+     font-weight: bold;
+   }

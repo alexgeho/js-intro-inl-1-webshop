@@ -32,3 +32,18 @@ input {
      display: none;
    }
 */
+/* FETTISDAGEN */
+body.fettisdagen {
+  background-image: url("/img/semla.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* all prices */
+body.fettisdagen .price,
+body.fettisdagen .product-price,
+body.fettisdagen #cartTotal {
+  color: red;
+  font-weight: bold;
+}
