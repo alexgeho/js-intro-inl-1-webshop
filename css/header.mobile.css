@@ -7,7 +7,7 @@ header {
 }
 
 header h1 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 100;
   margin: 0;
 }
@@ -93,6 +93,9 @@ HEADER ENDS
     display: flex;
     flex-direction: column;
   }
+  header h1 {
+    font-size: 1.6rem;
+  }
   .burger {
     display: none;
   }
@@ -124,7 +127,10 @@ HEADER ENDS
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
+  }
+  header h1 {
+    font-size: 2rem;
   }
   .burger {
     display: none;

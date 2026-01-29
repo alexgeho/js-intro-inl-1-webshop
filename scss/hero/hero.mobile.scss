@@ -6,6 +6,35 @@
 
   h1 {
     font-weight: 100;
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+  }
+
+  a {
+    font-size: 1.5rem;
+    color: black;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+
+
+ @media screen and (min-width: 768px) {
+
+  #hero {
+  background: #f0fcef;
+  min-height: 200px;
+  padding: 0 20px 130px;
+  margin-bottom: 20px;
+
+  h1 {
+    font-weight: 100;
     font-size: 2.5rem;
   }
 
@@ -21,4 +50,35 @@
   a:hover {
     text-decoration: none;
   }
+}
+
+ }
+
+ @media screen and (min-width: 1200px) {
+
+  #hero {
+  background: #f0fcef;
+  min-height: 200px;
+  padding: 0 20px 130px;
+  margin-bottom: 20px;
+
+  h1 {
+    font-weight: 100;
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+
+  a {
+    font-size: 1.5rem;
+    color: black;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+  
 }
