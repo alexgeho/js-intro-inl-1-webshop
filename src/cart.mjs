@@ -137,7 +137,6 @@ export function initCart(products) {
             messages.push('Måndagsrabatt: −10 %');
         }
 
-
         // --- WEEKEND SURCHARGE (15%) ---
         const day = now.getDay();
         const hour = now.getHours();
@@ -153,7 +152,6 @@ export function initCart(products) {
             const surcharge = total * 0.15;
             total += surcharge;
         }
-
 
         // --- BULK DISCOUNT ---
         cart.forEach(product => {
@@ -174,7 +172,6 @@ export function initCart(products) {
             messages.push('Tisdagsrabatt: −25 kr');
         }
 
-
         // --- SHIPPING ---
         const totalItems = cart.reduce((sum, p) => sum + p.amount, 0);
 
@@ -185,6 +182,20 @@ export function initCart(products) {
         } else {
             messages.push('Fri frakt');
         }
+
+        /* --- COUPON --- */
+        const couponInput = document.querySelector('#discountCode');
+        couponInput.addEventListener('input', () => {
+            updateCartTotals();
+        });
+        const coupon = couponInput?.value.trim();
+
+        if (coupon === 'a_damn_fine-cup_of-coffee') {
+            total = 0;
+            messages.length = 0;
+            messages.push('Rabattkod: hela beställningen är gratis ☕');
+        }
+
 
         // --- RENDER ---
         cartTotalElement.textContent = `Totalt: ${Math.round(total)} kr`;
