@@ -70,8 +70,11 @@ export function initCart(products) {
 
 
 
+    /* inkluded in inner functions of UPDATECARTTOTAL */
+    const couponInput = document.querySelector('#discountCode');
+
     /* FOR TESTS::: '2026-01-31T09:00:00' */
-    function updateCartTotals(now = new Date('2026-02-17T12:00:00')) {
+    function updateCartTotals(now = new Date()) {
 
         const isShroveTuesday = now.getDay() === 2; // 2 = Tuesday
 
@@ -183,11 +186,32 @@ export function initCart(products) {
             messages.push('Fri frakt');
         }
 
+        // --- DELIVERY TIME ---
+        let deliveryMessage = '';
+
+        // fredag 11–13 → fast tid kl. 15
+        if (day === 5 && hour >= 11 && hour < 13) {
+            deliveryMessage = 'Leverans kl. 15:00 p.g.a. veckomöte';
+        } else {
+            let deliveryMinutes = 30;
+
+            if (isWeekendSurcharge) {
+                deliveryMinutes = 90;
+            }
+
+            const isNight = hour >= 0 && hour < 5;
+            if (isNight) {
+                deliveryMinutes = 45;
+            }
+
+            deliveryMessage = `Leverans om ca ${deliveryMinutes} minuter`;
+        }
+
+        messages.push(deliveryMessage);
+
+
+
         /* --- COUPON --- */
-        const couponInput = document.querySelector('#discountCode');
-        couponInput.addEventListener('input', () => {
-            updateCartTotals();
-        });
         const coupon = couponInput?.value.trim();
 
         if (coupon === 'a_damn_fine-cup_of-coffee') {
@@ -206,6 +230,13 @@ export function initCart(products) {
 
         highlightCartTotalChange();
     }
+
+
+    couponInput.addEventListener('input', () => {
+        updateCartTotals();
+    });
+
+    /* HIGHLIGHTCHANGE */
 
     function highlightCartTotalChange() {
         cartTotalElement.classList.add('highlight-price');

@@ -127,16 +127,6 @@ export function initCheckout() {
 
     /* FORM VALIDERING */
 
-    function showError(input, message) {
-        const errorEl = document.getElementById(input.id + 'Error');
-        errorEl.textContent = message;
-    }
-
-    function clearError(input) {
-        const errorEl = document.getElementById(input.id + 'Error');
-        errorEl.textContent = '';
-    }
-
     function getPatternErrorMessage(input) {
         if (
             input.id === 'firstName' ||
@@ -157,6 +147,18 @@ export function initCheckout() {
         else {
             return 'Ogiltigt format';
         }
+    }
+
+    function showError(input, message) {
+        const errorEl = document.getElementById(input.id + 'Error');
+        if (!errorEl) return;
+        errorEl.textContent = message;
+    }
+
+    function clearError(input) {
+        const errorEl = document.getElementById(input.id + 'Error');
+        if (!errorEl) return;
+        errorEl.textContent = '';
     }
 
 
