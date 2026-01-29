@@ -46,3 +46,8 @@ body.fettisdagen #cartTotal {
   color: red;
   font-weight: bold;
 }
+
+#today {
+  font-size: 1rem;
+  color: aquamarine;
+}
