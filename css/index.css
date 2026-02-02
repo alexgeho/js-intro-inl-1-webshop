@@ -32,16 +32,37 @@ input {
      display: none;
    }
 */
+/* FETTISDAGEN */
+body.fettisdagen {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* all prices */
+body.fettisdagen .price,
+body.fettisdagen .product-price,
+body.fettisdagen #cartTotal {
+  color: red;
+  font-weight: bold;
+}
+
+#today {
+  font-size: 1rem;
+  color: aquamarine;
+}
+
 /* 
 HEADER STARTS
 */
 header {
   display: flex;
+  justify-content: space-around;
   margin: 20px 0 20px;
 }
 
 header h1 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 100;
   margin: 0;
 }
@@ -73,10 +94,6 @@ header h1 {
 }
 #navBugerJs.open ul a:hover {
   text-decoration: underline;
-}
-
-#navBugerJs ul li + li {
-  margin-top: 10px;
 }
 
 .burger {
@@ -127,42 +144,71 @@ header h1 {
 HEADER ENDS
 */
 @media screen and (min-width: 768px) {
-  #navBugerJs {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #999;
-    width: 100%;
-    min-height: 40%;
-    z-index: 2000;
+  header {
+    display: flex;
+    flex-direction: column;
   }
-  #navBugerJs.open {
-    position: absolute;
-    max-width: 80%;
-    background-color: #eeeeee;
-    display: inline-block;
-  }
-  #navBugerJs.open ul {
-    list-style: none;
-  }
-  #navBugerJs.open ul a {
-    text-decoration: none;
-    font-size: 2rem;
-    color: #000;
-  }
-  #navBugerJs.open ul a:hover {
-    text-decoration: underline;
-  }
-  #navBugerJs ul li + li {
-    margin-top: 10px;
+  header h1 {
+    font-size: 1.6rem;
   }
   .burger {
-    width: 30px;
-    height: 22px;
-    border: 0;
+    display: none;
+  }
+  #navBugerJs {
+    display: block;
+    position: static;
     background: none;
-    cursor: pointer;
-    position: relative;
+  }
+  #navBugerJs ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 1.4rem;
+    padding: 0;
+  }
+  #navBugerJs ul li {
+    list-style: none;
+  }
+  #navBugerJs ul a {
+    text-decoration: none;
+    color: #000;
+  }
+  #navBugerJs ul a:hover {
+    text-decoration: underline;
+  }
+}
+@media screen and (min-width: 1200px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  .burger {
+    display: none;
+  }
+  #navBugerJs {
+    background: none;
+  }
+  #navBugerJs ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 1.4rem;
+    padding: 0;
+  }
+  #navBugerJs ul li {
+    list-style: none;
+  }
+  #navBugerJs ul a {
+    text-decoration: none;
+    color: #000;
+  }
+  #navBugerJs ul a:hover {
+    text-decoration: underline;
   }
 }
 #hero {
@@ -173,10 +219,10 @@ HEADER ENDS
 }
 #hero h1 {
   font-weight: 100;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 #hero p {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 #hero a {
   font-size: 1.5rem;
@@ -186,6 +232,50 @@ HEADER ENDS
   text-decoration: none;
 }
 
+@media screen and (min-width: 768px) {
+  #hero {
+    background: #f0fcef;
+    min-height: 200px;
+    padding: 0 20px 130px;
+    margin-bottom: 20px;
+  }
+  #hero h1 {
+    font-weight: 100;
+    font-size: 2.5rem;
+  }
+  #hero p {
+    font-size: 1.8rem;
+  }
+  #hero a {
+    font-size: 1.5rem;
+    color: black;
+  }
+  #hero a:hover {
+    text-decoration: none;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #hero {
+    background: #f0fcef;
+    min-height: 200px;
+    padding: 0 20px 130px;
+    margin-bottom: 20px;
+  }
+  #hero h1 {
+    font-weight: 100;
+    font-size: 3rem;
+  }
+  #hero p {
+    font-size: 2rem;
+  }
+  #hero a {
+    font-size: 1.5rem;
+    color: black;
+  }
+  #hero a:hover {
+    text-decoration: none;
+  }
+}
 /* START MAIN */
 .product-img {
   width: 240px;

@@ -2,13 +2,13 @@
 
 const products = [
   // MUNKAR – CLASSIC
-  { id: 1, name: 'A-detalj', price: 25, rating: 4.2, category: 'bockad-armering', images: ['vara1.png', 'vara1-2.png'] },
-  { id: 2, name: 'B-detalj', price: 22, rating: 3.8, category: 'bockad-armering', images: ['vara1.png', 'vara1-2.png'] },
-  { id: 3, name: 'C-detalj', price: 28, rating: 4.7, category: 'bockad-armering', images: ['vara1.png', 'vara1-2.png'] },
+  { id: 1, name: 'Detaljer för ventil', price: 25, rating: 4.2, category: 'bockad-armering', images: ['vara1.png', 'vara1-2.png'] },
+  { id: 2, name: 'Fästdon', price: 22, rating: 3.8, category: 'bockad-armering', images: ['vara2.png', 'vara2-2.png'] },
+  { id: 3, name: 'Förstärkningskorgar för pelare', price: 28, rating: 4.7, category: 'bockad-armering', images: ['vara3.png', 'vara3-2.png'] },
 
   // MUNKAR – VEGAN
-  { id: 4, name: 'D-detalj', price: 30, rating: 4.3, category: 'for-pelare', images: ['vara3.png', 'vara3-2.png'] },
-  { id: 5, name: 'E-detalj', price: 29, rating: 4.1, category: 'for-pelare', images: ['vara3.png', 'vara3-2.png'] },
+  { id: 4, name: 'Förstärkningskorgar för fundament', price: 30, rating: 4.3, category: 'for-pelare', images: ['vara4.png', 'vara4-2.png'] },
+  { id: 5, name: 'Förstärkningskorgar för väggar', price: 29, rating: 4.1, category: 'for-pelare', images: ['vara5.png', 'vara5-2.png'] },
   { id: 6, name: 'F-detalj', price: 31, rating: 4.5, category: 'for-pelare', images: ['vara3.png', 'vara3-2.png'] },
 
   // MUNKAR – PROTEIN
