@@ -10,8 +10,8 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
   <title>FED25D | Inlämningsuppgift 1</title>
-  <script type="module" crossorigin src="/js-intro-inl-1-webshop/assets/index-B98NaQzb.js"></script>
-  <link rel="stylesheet" crossorigin href="/js-intro-inl-1-webshop/assets/index-CkEaxvmp.css">
+  <script type="module" crossorigin src="/js-intro-inl-1-webshop/assets/index-CWcd_HXA.js"></script>
+  <link rel="stylesheet" crossorigin href="/js-intro-inl-1-webshop/assets/index-C4zH2xSb.css">
 </head>
 
 <body>
@@ -29,10 +29,11 @@
 
       <nav id="navBugerJs">
         <ul id="menuLinks">
-          <li><a href="https://www.google.com" target="_blank">Hem</a></li>
+          <li><a href="#home">Hem</a></li>
           <li><a href="#home">Kategorier</a></li>
           <li><a href="#home">Om oss</a></li>
           <li><a href="#home">FAQ</a></li>
+          <li><a href="#order-info">Beställningsinformation</a></li>
           <li><a href="#home">Contact</a></li>
         </ul>
 
@@ -40,7 +41,14 @@
     </div>
   </header>
 
- 
+  <section id="hero">
+    <h1>Prefabricerade armeringselement</h1>
+    <p>Spara tid och pengar – utan att kompromissa med kvalitet och standarder.</p>
+
+    <a class="cta" href="">Boka rådgivning</a>
+  </section>
+
+
   <main>
 
     <aside>
@@ -73,6 +81,7 @@
       <section class="hidden">
         <h2>Varukorgen</h2>
         <p class="cartTotal" id="cartTotal">0 kr</p>
+        <div id="cartMessages"></div>
         <div id="cart">
           <p>Varukorgen är tom.</p>
         </div>
@@ -132,13 +141,11 @@
             </div>
 
 
-            <!-- small:id="phoneError" -->
-
             <div class="form-dubble">
               <div class="form-row">
                 <label>Telefon (mobil)</label>
-                <input id="phone" name="phone" inputmode="numeric" pattern="\d*">
-                <small class="error-message"></small>
+                <input id="phone" type="tel" name="phone" required pattern="^\+46[0-9]{7,13}$">
+                <small class="error-message" id="phoneError"></small>
               </div>
 
               <div class="form-row">
@@ -215,7 +222,7 @@
 
             <div class="form-row">
               <label>Rabattkod</label>
-              <input type="text" name="discount">
+              <input id="discountCode" type="text" name="discount">
             </div>
           </fieldset>
 
@@ -232,7 +239,6 @@
 
       <section id="productsList"></section>
 
-      <img src="" alt="">
 
       <div id="msg"></div>
 
@@ -243,6 +249,36 @@
 
       <button id="addMunkBtn">Lägg till</button>
 
+    </section>
+
+    <section id="order-info">
+      <h2>Beställningsinformation</h2>
+
+      <details>
+        <summary>Rabatter & erbjudanden</summary>
+        <ul>
+          <li>Måndagsrabatt: −10 % före kl. 10</li>
+          <li>10 % rabatt vid minst 10 st av samma sort</li>
+          <li>25 kr rabatt på jämna veckor, tisdagar</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Leverans & frakt</summary>
+        <ul>
+          <li>Fri frakt över 15 munkar</li>
+          <li>Annars: 25 kr + 10 %</li>
+          <li>Helg: 1,5 h leverans</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Specialdagar</summary>
+        <ul>
+          <li>Alla hjärtans dag: hjärtmunk ingår</li>
+          <li>Fettisdagen: röd prisvisning + semla</li>
+        </ul>
+      </details>
     </section>
 
   </main>
